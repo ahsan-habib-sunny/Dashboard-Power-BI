@@ -1,0 +1,9 @@
+role_id,role_name,department
+R01,Head Chef,Kitchen
+R02,Sous Chef,Kitchen
+R03,Line Cook,Kitchen
+R04,Kitchen Porter,Kitchen
+R05,General Manager,Front of House
+R06,Supervisor,Front of House
+R07,Server,Front of House
+R08,Bartender,Front of House

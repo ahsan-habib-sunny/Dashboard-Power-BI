@@ -1,0 +1,92 @@
+ingredient_id,ingredient_name,ingredient_category,unit,standard_cost_per_unit,supplier_id
+I001,Beef Short Rib,Meat,kg,14.0,S01
+I002,Sirloin Steak,Meat,kg,28.0,S01
+I003,Ribeye Steak,Meat,kg,32.0,S01
+I004,Beef Fillet,Meat,kg,48.0,S01
+I005,Tomahawk Steak,Meat,kg,30.0,S01
+I006,Beef Mince,Meat,kg,8.5,S01
+I007,Chicken Breast,Meat,kg,7.5,S01
+I008,Chicken Thigh,Meat,kg,5.5,S01
+I009,Chicken Wings,Meat,kg,4.5,S01
+I010,Whole Chicken,Meat,each,5.0,S01
+I011,Lamb Rump,Meat,kg,18.0,S01
+I012,Lamb Mince,Meat,kg,10.0,S01
+I013,Duck Leg,Meat,kg,12.0,S01
+I014,Bacon,Meat,kg,9.0,S01
+I015,Pork Sausage,Meat,kg,7.0,S01
+I016,Cod Fillet,Fish,kg,16.0,S02
+I017,Seabass Fillet,Fish,kg,19.0,S02
+I018,King Prawns,Fish,kg,18.0,S02
+I019,Squid,Fish,kg,11.0,S02
+I020,Lobster,Fish,each,14.0,S02
+I021,Butter,Dairy,kg,7.0,S03
+I022,Double Cream,Dairy,L,4.0,S03
+I023,Milk,Dairy,L,1.1,S03
+I024,Cheddar,Dairy,kg,9.0,S03
+I025,Parmesan,Dairy,kg,18.0,S03
+I026,Halloumi,Dairy,kg,11.0,S03
+I027,Burrata,Dairy,each,3.2,S03
+I028,Eggs,Dairy,each,0.28,S03
+I029,Ice Cream,Dairy,L,5.5,S03
+I030,Cream Cheese,Dairy,kg,6.0,S03
+I031,Potatoes,Produce,kg,0.9,S04
+I032,Onions,Produce,kg,1.0,S04
+I033,Garlic,Produce,kg,5.0,S04
+I034,Tomatoes,Produce,kg,2.6,S04
+I035,Lettuce,Produce,each,0.9,S04
+I036,Mushrooms,Produce,kg,4.5,S04
+I037,Tenderstem Broccoli,Produce,kg,7.0,S04
+I038,Lemons,Produce,each,0.3,S04
+I039,Limes,Produce,each,0.25,S04
+I040,Mint,Produce,bunch,0.8,S04
+I041,Fresh Herbs,Produce,bunch,1.0,S04
+I042,Seasonal Veg,Produce,kg,2.5,S04
+I043,Avocado,Produce,each,0.9,S04
+I044,Strawberries,Produce,kg,6.0,S04
+I045,Oranges,Produce,each,0.4,S04
+I046,Arborio Rice,Dry Goods,kg,3.2,S05
+I047,Basmati Rice,Dry Goods,kg,2.2,S05
+I048,Linguine,Dry Goods,kg,2.4,S05
+I049,Macaroni,Dry Goods,kg,1.8,S05
+I050,Flour,Dry Goods,kg,0.8,S05
+I051,Panko Breadcrumbs,Dry Goods,kg,3.5,S05
+I052,Brioche Buns,Dry Goods,each,0.45,S05
+I053,Flatbread,Dry Goods,each,0.35,S05
+I054,Bao Buns,Dry Goods,each,0.3,S05
+I055,Puff Pastry,Dry Goods,kg,4.0,S05
+I056,Sugar,Dry Goods,kg,1.1,S05
+I057,Dark Chocolate,Dry Goods,kg,9.0,S05
+I058,Vegetable Oil,Dry Goods,L,2.0,S05
+I059,Olive Oil,Dry Goods,L,7.0,S05
+I060,Truffle Oil,Dry Goods,L,40.0,S05
+I061,Stock Base,Dry Goods,kg,6.0,S05
+I062,Katsu Curry Sauce,Dry Goods,L,4.5,S05
+I063,Spices,Dry Goods,kg,12.0,S05
+I064,Plant Patty,Dry Goods,each,1.4,S05
+I065,Chickpeas,Dry Goods,kg,2.0,S05
+I066,Quinoa,Dry Goods,kg,5.0,S05
+I067,Toffee Sauce,Dry Goods,L,4.5,S05
+I068,Biscuit Base,Dry Goods,kg,3.0,S05
+I069,Meringue,Dry Goods,kg,6.0,S05
+I070,Pastry Case,Dry Goods,each,0.6,S05
+I071,Coffee Beans,Dry Goods,kg,18.0,S05
+I072,Lager Keg,Beverages,L,2.4,S06
+I073,IPA Keg,Beverages,L,3.0,S06
+I074,Stout Keg,Beverages,L,2.8,S06
+I075,Cider Keg,Beverages,L,2.3,S06
+I076,House Red Wine,Beverages,L,6.0,S06
+I077,House White Wine,Beverages,L,6.0,S06
+I078,Prosecco,Beverages,L,8.0,S06
+I079,Malbec Bottle,Beverages,each,9.5,S06
+I080,Sauvignon Blanc Bottle,Beverages,each,8.5,S06
+I081,Vodka,Beverages,L,16.0,S06
+I082,Gin,Beverages,L,18.0,S06
+I083,Rum,Beverages,L,17.0,S06
+I084,Bourbon,Beverages,L,22.0,S06
+I085,Aperol,Beverages,L,14.0,S06
+I086,Passion Fruit Puree,Beverages,L,6.0,S06
+I087,Coffee Liqueur,Beverages,L,15.0,S06
+I088,Cola Syrup,Beverages,L,6.0,S06
+I089,Lemonade Syrup,Beverages,L,5.0,S06
+I090,Sparkling Water Bottle,Beverages,each,0.4,S06
+I091,Orange Juice,Beverages,L,2.2,S06

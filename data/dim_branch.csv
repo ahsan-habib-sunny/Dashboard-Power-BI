@@ -1,0 +1,5 @@
+branch_id,branch_name,area_type,postcode,seats,opening_date,manager_email,trading_hours_per_day
+B01,Northern Quarter,City Centre,M4 1HN,90,2019-04-12,nq.manager@lqdining.example,11
+B02,Deansgate,City Centre,M3 4LZ,120,2018-09-01,deansgate.manager@lqdining.example,11
+B03,Didsbury,Suburban,M20 6RE,70,2021-03-19,didsbury.manager@lqdining.example,11
+B04,Salford Quays,Waterfront,M50 3AZ,100,2025-06-02,salfordquays.manager@lqdining.example,11

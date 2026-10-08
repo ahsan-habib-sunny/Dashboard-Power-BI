@@ -1,0 +1,62 @@
+menu_item_id,menu_item_name,category,menu_section,current_price,is_vegetarian
+M001,Soup of the Day,Starters,Food,5.5,True
+M002,Salt & Pepper Calamari,Starters,Food,7.5,False
+M003,Halloumi Fries,Starters,Food,6.5,True
+M004,Chicken Wings,Starters,Food,7.0,False
+M005,Garlic Flatbread,Starters,Food,5.0,True
+M006,Burrata & Tomato,Starters,Food,8.5,True
+M007,Prawn Cocktail,Starters,Food,8.0,False
+M008,Crispy Duck Bao,Starters,Food,8.0,False
+M009,Fish & Chips,Mains,Food,15.5,False
+M010,Chicken Supreme,Mains,Food,17.5,False
+M011,Beef Short Rib,Mains,Food,22.0,False
+M012,Lamb Rump,Mains,Food,23.5,False
+M013,Seabass Fillet,Mains,Food,19.5,False
+M014,Mushroom Risotto,Mains,Food,14.5,True
+M015,Chicken Caesar Salad,Mains,Food,13.5,False
+M016,Steak Frites,Mains,Food,21.0,False
+M017,Pie of the Day,Mains,Food,15.0,False
+M018,Vegan Buddha Bowl,Mains,Food,13.0,True
+M019,Lobster Linguine,Mains,Food,26.0,False
+M020,Chicken Katsu Curry,Mains,Food,15.5,False
+M021,8oz Sirloin,Grill,Food,26.0,False
+M022,10oz Ribeye,Grill,Food,30.0,False
+M023,6oz Fillet,Grill,Food,34.0,False
+M024,Half Rotisserie Chicken,Grill,Food,16.5,False
+M025,Tomahawk to Share,Grill,Food,65.0,False
+M026,Classic Beef Burger,Burgers,Food,14.0,False
+M027,Double Smash Burger,Burgers,Food,16.0,False
+M028,Buttermilk Chicken Burger,Burgers,Food,14.5,False
+M029,Plant Burger,Burgers,Food,13.5,True
+M030,Lamb Kofta Burger,Burgers,Food,15.0,False
+M031,Fries,Sides,Food,4.0,True
+M032,Truffle Parmesan Fries,Sides,Food,5.5,True
+M033,Onion Rings,Sides,Food,4.5,True
+M034,House Salad,Sides,Food,4.0,True
+M035,Mac & Cheese,Sides,Food,5.5,True
+M036,Tenderstem Broccoli,Sides,Food,4.5,True
+M037,Sticky Toffee Pudding,Desserts,Food,7.0,True
+M038,Chocolate Brownie,Desserts,Food,6.5,True
+M039,Lemon Tart,Desserts,Food,6.5,True
+M040,Eton Mess,Desserts,Food,6.5,True
+M041,Cheesecake,Desserts,Food,7.0,True
+M042,Ice Cream Trio,Desserts,Food,5.5,True
+M043,Coca-Cola,Soft Drinks,Drinks,3.2,True
+M044,Lemonade,Soft Drinks,Drinks,3.2,True
+M045,Sparkling Water,Soft Drinks,Drinks,2.8,True
+M046,Fresh Orange Juice,Soft Drinks,Drinks,3.8,True
+M047,Flat White,Soft Drinks,Drinks,3.2,True
+M048,Draught Lager,Beer & Cider,Drinks,5.8,True
+M049,Craft IPA,Beer & Cider,Drinks,6.5,True
+M050,Guinness,Beer & Cider,Drinks,6.2,True
+M051,Cider,Beer & Cider,Drinks,5.8,True
+M052,House Red (175ml),Wine,Drinks,6.5,True
+M053,House White (175ml),Wine,Drinks,6.5,True
+M054,Prosecco (Glass),Wine,Drinks,7.5,True
+M055,Malbec (Bottle),Wine,Drinks,32.0,True
+M056,Sauvignon Blanc (Bottle),Wine,Drinks,30.0,True
+M057,Pornstar Martini,Cocktails,Drinks,10.5,True
+M058,Espresso Martini,Cocktails,Drinks,10.5,True
+M059,Aperol Spritz,Cocktails,Drinks,9.5,True
+M060,Mojito,Cocktails,Drinks,9.5,True
+M061,Old Fashioned,Cocktails,Drinks,11.0,True

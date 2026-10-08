@@ -1,0 +1,11 @@
+campaign_id,campaign_name,start_date,end_date,marketing_channel,discount_pct,discount_applies_to,order_channel,branch_scope,planned_budget
+CMP000,No Campaign,,,None,0.0,All,All,All,0
+CMP001,Christmas Party Season 2024,2024-11-18,2024-12-22,Email,0.1,Food,Dine-in,All,3000
+CMP002,January Blues 2025,2025-01-06,2025-01-31,Instagram,0.25,Food,Dine-in,All,4500
+CMP003,Uber Eats Launch Offer,2025-04-01,2025-04-30,Uber Eats Ads,0.2,All,Uber Eats,All,2500
+CMP004,Summer Cocktail Hour,2025-07-01,2025-08-31,Instagram,0.5,Cocktails,Dine-in,All,3500
+CMP005,Influencer Takeover,2025-10-06,2025-11-02,TikTok,0.15,All,Dine-in,All,9000
+CMP006,Christmas Party Season 2025,2025-11-17,2025-12-21,Email,0.1,Food,Dine-in,All,3500
+CMP007,January Blues 2026,2026-01-05,2026-01-31,Instagram,0.25,Food,Dine-in,All,5000
+CMP008,Student Night Wednesdays,2026-02-04,2026-04-29,Instagram,0.3,All,Dine-in,All,3000
+CMP009,Salford Summer Terrace,2026-06-01,2026-07-31,Google Ads,0.0,All,Dine-in,B04,4000

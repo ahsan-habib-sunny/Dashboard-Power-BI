@@ -1,0 +1,5 @@
+channel_id,channel_name,channel_group,commission_rate
+CH1,Dine-in,In-house,0.0
+CH2,Takeaway,In-house,0.0
+CH3,Deliveroo,Delivery,0.3
+CH4,Uber Eats,Delivery,0.3
