@@ -101,19 +101,7 @@ A star schema with **9 fact tables, 10 dimensions and 1 bridge table**: 36 one-t
 | Menu engineering with `SWITCH(TRUE())` | Star / Plowhorse / Puzzle / Dog classification, coloured by a measure |
 | Measure-driven formatting and titles | Dynamic drill-through title, conditional colours, constant lines bound to measures |
 
-Example, like-for-like sales:
 
-```dax
-LFL Net Sales =
-VAR DatesWithData =
-    CALCULATETABLE ( VALUES ( dim_date[date] ), dim_date[has_sales_data] = TRUE () )
-VAR FirstDateLY = MINX ( SAMEPERIODLASTYEAR ( DatesWithData ), dim_date[date] )
-VAR LFLBranches = FILTER ( dim_branch, dim_branch[opening_date] <= FirstDateLY )
-RETURN
-    CALCULATE ( [Net Sales], LFLBranches )
-```
-
----
 
 ## Report features
 
@@ -128,10 +116,9 @@ RETURN
 
 ```
 ├── LQ_Dining_Report.pbix        Power BI report
-├── LQ_Dining_Report.pdf         PDF export of all pages
 ├── data/                        20 CSV files (star schema)
 ├── generate_data.py             Python script that creates the synthetic data
-├── screenshots/                 Page images used in this README
+├── images                 Page images used in this README
 └── README.md
 ```
 
