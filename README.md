@@ -48,9 +48,9 @@ Total sales are up **21% year on year**. The owner wants to know:
 
 | | |
 |---|---|
-| ![Sales & Operations](screenshots/02_sales_operations.png) | ![Marketing & Customers](screenshots/03_marketing_customers.png) |
-| ![Kitchen & Menu](screenshots/04_kitchen_menu.png) | ![Finance & Labour](screenshots/05_finance_labour.png) |
-| ![Branch Detail – Didsbury](screenshots/06_branch_detail_didsbury.png) | ![Drill-through](screenshots/07_drill_through.png) |
+| ![Sales & Operations](https://github.com/ahsan-habib-sunny/Dashboard-Power-BI/blob/8f72cc60171a38560c14941560f3b4b908a2fd76/Images/Sales%20%26%20Operations.png) | ![Marketing & Customers](https://github.com/ahsan-habib-sunny/Dashboard-Power-BI/blob/8f72cc60171a38560c14941560f3b4b908a2fd76/Images/Marketing%20%26%20Customers.png) |
+| ![Kitchen & Menu](https://github.com/ahsan-habib-sunny/Dashboard-Power-BI/blob/8f72cc60171a38560c14941560f3b4b908a2fd76/Images/Kitchen%20%26%20Menu.png) | ![Finance & Labour](https://github.com/ahsan-habib-sunny/Dashboard-Power-BI/blob/8f72cc60171a38560c14941560f3b4b908a2fd76/Images/Finance%20%26%20Labour.png) |
+| ![Branch Detail – Didsbury](https://github.com/ahsan-habib-sunny/Dashboard-Power-BI/blob/8f72cc60171a38560c14941560f3b4b908a2fd76/Images/Branch%20Details.png) | ![Drill-through](https://github.com/ahsan-habib-sunny/Dashboard-Power-BI/blob/8f72cc60171a38560c14941560f3b4b908a2fd76/Images/Drill%20Through.png) |
 
 ---
 
@@ -72,7 +72,7 @@ A star schema with **9 fact tables, 10 dimensions and 1 bridge table**: 36 one-t
 
 **Dimensions:** date, time, branch, channel, menu item, ingredient, supplier, campaign, customer, role. **Bridge:** recipe (dish → ingredient → quantity per portion).
 
-![Data model](screenshots/00_data_model.png)
+
 
 ### Modelling decisions
 
