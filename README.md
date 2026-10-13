@@ -4,9 +4,6 @@ An end-to-end Power BI report for a fictional four-branch restaurant group in Ma
 
 > All data is synthetic, generated in Python to behave like a real UK casual-dining business. No real company data is used.
 
-<<<<<<< HEAD
-![Executive Overview](Images/Executive Dashboard.png)
-=======
 ![Executive Overview](Images/Executive%20Dashboard.png)
 >>>>>>> 47d8c60 (Fix README image links)
 
