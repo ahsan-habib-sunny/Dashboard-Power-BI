@@ -54,9 +54,8 @@ table 'Time Intelligence'
 				
 				    VAR DatesWithData = CALCULATETABLE ( VALUES ( dim_date[date] ), dim_date[has_sales_data] = TRUE () )
 				    VAR FirstDateLY = MINX ( SAMEPERIODLASTYEAR ( DatesWithData ), dim_date[date] )
-				    VAR LFLBranches = FILTER ( dim_branch, dim_branch[opening_date] <= FirstDateLY )
 				    RETURN
-				        CALCULATE ( SELECTEDMEASURE (), LFLBranches )
+				        CALCULATE ( SELECTEDMEASURE (), KEEPFILTERS ( dim_branch[opening_date] <= FirstDateLY ) )
 				```
 
 		calculationItem 'LFL LY' = ```
@@ -64,9 +63,10 @@ table 'Time Intelligence'
 				    VAR DatesWithData =
 				        CALCULATETABLE ( VALUES ( dim_date[date] ), dim_date[has_sales_data] = TRUE () )
 				    VAR FirstDateLY = MINX ( SAMEPERIODLASTYEAR ( DatesWithData ), dim_date[date] )
-				    VAR LFLBranches = FILTER ( dim_branch, dim_branch[opening_date] <= FirstDateLY )
+				
 				    RETURN
-				        CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( DatesWithData ), LFLBranches )
+				        CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( DatesWithData ), 
+				                    KEEPFILTERS ( dim_branch[opening_date] <= FirstDateLY ) )
 				```
 
 		calculationItem 'LFL YoY %' = ```
