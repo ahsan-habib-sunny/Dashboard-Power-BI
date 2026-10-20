@@ -1,0 +1,5 @@
+role 'Head Office'
+	modelPermission: read
+
+	annotation PBI_Id = 55819c7df3f74f6e99b1ef4542922749
+

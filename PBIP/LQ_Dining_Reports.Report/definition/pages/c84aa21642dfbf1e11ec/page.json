@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "c84aa21642dfbf1e11ec",
+  "displayName": "Marketing & Customers",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "186L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "8026dc52835401edcf9f",
+      "target": "a045e924c4f7cd591697",
+      "type": "DataFilter"
+    },
+    {
+      "source": "8026dc52835401edcf9f",
+      "target": "77d527506611e424f3e6",
+      "type": "NoFilter"
+    },
+    {
+      "source": "8026dc52835401edcf9f",
+      "target": "014a3dd27e9ec88ef65f",
+      "type": "NoFilter"
+    }
+  ]
+}

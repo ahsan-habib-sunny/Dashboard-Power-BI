@@ -1,0 +1,21 @@
+expression DataFolder = "D:\ahsantheanalyst\Power BI\LQ Dining Ltd\data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 22f79eb1-f35e-4934-bf68-2634bc676ad5
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression RangeStart = #datetime(2026, 1, 8, 0, 0, 0) meta [IsParameterQuery=true, Type="DateTime", IsParameterQueryRequired=true]
+	lineageTag: 5cdedf15-e533-41be-8542-443b633ba2f1
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = DateTime
+
+expression RangeEnd = #datetime(2026, 1, 10, 0, 0, 0) meta [IsParameterQuery=true, Type="DateTime", IsParameterQueryRequired=true]
+	lineageTag: ef79a1a2-5673-48c2-9ca9-26e8ec91833f
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = DateTime
+

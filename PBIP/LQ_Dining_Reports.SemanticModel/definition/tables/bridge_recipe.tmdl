@@ -1,0 +1,51 @@
+table bridge_recipe
+	lineageTag: 57af9816-9c45-4433-906e-248649e6de0c
+
+	column recipe_line_id
+		dataType: string
+		lineageTag: bc5ad1e8-8365-4526-9f18-ffc51ca529f7
+		summarizeBy: none
+		sourceColumn: recipe_line_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column menu_item_id
+		dataType: string
+		lineageTag: f600ec48-287f-4ff6-8209-55e2e0bd7489
+		summarizeBy: none
+		sourceColumn: menu_item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ingredient_id
+		dataType: string
+		lineageTag: 5a2432c8-d11f-4c79-82c1-dfa2ada6459e
+		summarizeBy: none
+		sourceColumn: ingredient_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity_per_portion
+		dataType: double
+		lineageTag: b606716b-7f9e-4088-ac7c-a09dc9144b35
+		summarizeBy: sum
+		sourceColumn: quantity_per_portion
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition bridge_recipe = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "bridge_recipe.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"recipe_line_id", type text}, {"menu_item_id", type text}, {"ingredient_id", type text}, {"quantity_per_portion", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

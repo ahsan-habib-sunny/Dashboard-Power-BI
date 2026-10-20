@@ -1,0 +1,87 @@
+table dim_branch
+	lineageTag: 886168e4-0452-401c-983a-8e5b085ae3cd
+
+	column branch_id
+		dataType: string
+		lineageTag: bfa3a29e-d20a-48f4-ad69-8329413b54c2
+		summarizeBy: none
+		sourceColumn: branch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column branch_name
+		dataType: string
+		lineageTag: 94d8d1c2-3521-4128-a1b6-10f8359dca6c
+		summarizeBy: none
+		sourceColumn: branch_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_type
+		dataType: string
+		lineageTag: 4feb64b9-9d2d-4087-bf2e-29fdc3f4d41c
+		summarizeBy: none
+		sourceColumn: area_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column postcode
+		dataType: string
+		lineageTag: bcd1dac9-355a-4160-82d0-61673fa2e1ce
+		summarizeBy: none
+		sourceColumn: postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column seats
+		dataType: int64
+		formatString: 0
+		lineageTag: 3aa9a538-864a-41c5-85c3-e6c0a18d3f2c
+		summarizeBy: sum
+		sourceColumn: seats
+
+		annotation SummarizationSetBy = Automatic
+
+	column opening_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ce40d46d-8cdb-4835-ba29-9cfab52d72db
+		summarizeBy: none
+		sourceColumn: opening_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column manager_email
+		dataType: string
+		lineageTag: bbc61bba-20f5-424b-92d7-a4cee7c8c3af
+		summarizeBy: none
+		sourceColumn: manager_email
+
+		annotation SummarizationSetBy = Automatic
+
+	column trading_hours_per_day
+		dataType: int64
+		formatString: 0
+		lineageTag: f3923bbb-6220-4577-bb76-692c41c49917
+		summarizeBy: sum
+		sourceColumn: trading_hours_per_day
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_branch = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_branch.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"branch_id", type text}, {"branch_name", type text}, {"area_type", type text}, {"postcode", type text}, {"seats", Int64.Type}, {"opening_date", type date}, {"manager_email", type text}, {"trading_hours_per_day", Int64.Type}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","nq.manager@lqdining.example","AHSANTHEANALYST\ahsan",Replacer.ReplaceText,{"manager_email"})
+				in
+				    #"Replaced Value"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

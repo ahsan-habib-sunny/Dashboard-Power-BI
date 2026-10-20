@@ -1,0 +1,106 @@
+table dim_campaign
+	lineageTag: 78f40e0d-82ae-48fd-8f0b-e22ab32d88de
+
+	column campaign_id
+		dataType: string
+		lineageTag: 363a7192-0b5c-4d7f-972d-16395876bf00
+		summarizeBy: none
+		sourceColumn: campaign_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_name
+		dataType: string
+		lineageTag: a3424eac-847a-4c2a-96dc-e96bb5bd0d56
+		summarizeBy: none
+		sourceColumn: campaign_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_date
+		dataType: dateTime
+		formatString: mmmm yyyy
+		lineageTag: 8594c213-fc69-449b-b312-faec6a20afef
+		summarizeBy: none
+		sourceColumn: start_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column end_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 363ed4b3-6f7c-4b56-abde-6b91f9bdb46c
+		summarizeBy: none
+		sourceColumn: end_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column marketing_channel
+		dataType: string
+		lineageTag: e5cc2cbf-2bb5-4470-981e-d6fac8199e1f
+		summarizeBy: none
+		sourceColumn: marketing_channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column discount_pct
+		dataType: double
+		lineageTag: a188395a-9e6a-4a66-a6e9-c47f5a9838a4
+		summarizeBy: sum
+		sourceColumn: discount_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column discount_applies_to
+		dataType: string
+		lineageTag: 2ca497a2-4f37-41d6-90e0-882165eae2cc
+		summarizeBy: none
+		sourceColumn: discount_applies_to
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_channel
+		dataType: string
+		lineageTag: 07e83d2e-8954-4d12-8fdc-c27c034e2e5d
+		summarizeBy: none
+		sourceColumn: order_channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column branch_scope
+		dataType: string
+		lineageTag: 90a2c057-bf00-442c-a4f2-63cab5d68d51
+		summarizeBy: none
+		sourceColumn: branch_scope
+
+		annotation SummarizationSetBy = Automatic
+
+	column planned_budget
+		dataType: int64
+		formatString: 0
+		lineageTag: 87972239-7628-4dc8-bc3d-b8a8e11cdf17
+		summarizeBy: sum
+		sourceColumn: planned_budget
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_campaign = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_campaign.csv"),[Delimiter=",", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"campaign_id", type text}, {"campaign_name", type text}, {"start_date", type date}, {"end_date", type date}, {"marketing_channel", type text}, {"discount_pct", type number}, {"discount_applies_to", type text}, {"order_channel", type text}, {"branch_scope", type text}, {"planned_budget", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

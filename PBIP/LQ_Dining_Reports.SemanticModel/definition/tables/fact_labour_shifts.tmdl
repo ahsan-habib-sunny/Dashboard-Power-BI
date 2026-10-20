@@ -1,0 +1,90 @@
+table fact_labour_shifts
+	lineageTag: 80e8c49b-0498-43c4-8640-2bb755b5da0c
+
+	column shift_id
+		dataType: string
+		lineageTag: 13775746-01d8-4bf9-b37e-7a1ff0716b8f
+		summarizeBy: none
+		sourceColumn: shift_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 48f5501e-e2aa-448f-91fd-1a92118169cd
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column branch_id
+		dataType: string
+		lineageTag: c8e1ff27-4bf3-40a1-a00e-0ff25eaa96f8
+		summarizeBy: none
+		sourceColumn: branch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column role_id
+		dataType: string
+		lineageTag: a0d5610b-976c-4c2f-b9aa-96ead0b44191
+		summarizeBy: none
+		sourceColumn: role_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column scheduled_hours
+		dataType: double
+		lineageTag: bd3f61fa-811f-495d-80f4-0281725cbe18
+		summarizeBy: sum
+		sourceColumn: scheduled_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column actual_hours
+		dataType: double
+		lineageTag: 9e38bafe-cf44-43ec-82b3-80dd49b3c1cd
+		summarizeBy: sum
+		sourceColumn: actual_hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column hourly_rate
+		dataType: double
+		lineageTag: ce1d7c08-cd9e-4516-940a-55dde720815b
+		summarizeBy: sum
+		sourceColumn: hourly_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column labour_cost
+		dataType: double
+		lineageTag: e0ad379b-4208-49d6-90bd-77812768f12e
+		summarizeBy: sum
+		sourceColumn: labour_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_labour_shifts = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_labour_shifts.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"shift_id", type text}, {"date", type date}, {"branch_id", type text}, {"role_id", type text}, {"scheduled_hours", type number}, {"actual_hours", type number}, {"hourly_rate", type number}, {"labour_cost", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

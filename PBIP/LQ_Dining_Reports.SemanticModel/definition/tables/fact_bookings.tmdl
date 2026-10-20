@@ -1,0 +1,95 @@
+table fact_bookings
+	lineageTag: 870e5df5-525a-4595-8b12-b2809bb339f3
+
+	column booking_id
+		dataType: string
+		lineageTag: 28507eb1-91a4-46c3-a623-c7e31947c720
+		summarizeBy: none
+		sourceColumn: booking_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column booking_created_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 019ef689-aec9-45fd-b4c2-a2fc1683ac50
+		summarizeBy: none
+		sourceColumn: booking_created_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column visit_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d33b356a-4fd9-4fa5-ab67-7cf87e65b7b8
+		summarizeBy: none
+		sourceColumn: visit_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column visit_hour
+		dataType: int64
+		formatString: 0
+		lineageTag: cdb24f54-0d5d-4b6c-b23d-73b1c64066af
+		summarizeBy: sum
+		sourceColumn: visit_hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column branch_id
+		dataType: string
+		lineageTag: 9fe74094-ce32-4d4d-940b-8e5355019edc
+		summarizeBy: none
+		sourceColumn: branch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 15c6fa22-988b-4cc9-aa03-4a72f44a49bb
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column booking_source
+		dataType: string
+		lineageTag: 6d364280-4f41-4827-97df-fd664d3ae8e2
+		summarizeBy: none
+		sourceColumn: booking_source
+
+		annotation SummarizationSetBy = Automatic
+
+	column party_size
+		dataType: int64
+		formatString: 0
+		lineageTag: 91fd7e88-8bbf-4910-bf23-5b64d59165a2
+		summarizeBy: sum
+		sourceColumn: party_size
+
+		annotation SummarizationSetBy = Automatic
+
+	column booking_status
+		dataType: string
+		lineageTag: 71996c3b-ceb3-4e98-bfae-53852366a3e3
+		summarizeBy: none
+		sourceColumn: booking_status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_bookings = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_bookings.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"booking_id", type text}, {"booking_created_date", type date}, {"visit_date", type date}, {"visit_hour", Int64.Type}, {"branch_id", type text}, {"customer_id", type text}, {"booking_source", type text}, {"party_size", Int64.Type}, {"booking_status", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

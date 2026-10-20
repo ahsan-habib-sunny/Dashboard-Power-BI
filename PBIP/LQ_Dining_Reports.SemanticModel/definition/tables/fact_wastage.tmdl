@@ -1,0 +1,90 @@
+table fact_wastage
+	lineageTag: 04567dd4-7d48-44e6-8647-b73bee5f59e8
+
+	column waste_id
+		dataType: string
+		lineageTag: a25a3009-b258-495b-a400-eb1fb1cb867f
+		summarizeBy: none
+		sourceColumn: waste_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 09eb4466-5066-4845-bdd0-e7fee129e70e
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column branch_id
+		dataType: string
+		lineageTag: cf3908d3-a19b-41ad-a8a5-0a111a503613
+		summarizeBy: none
+		sourceColumn: branch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ingredient_id
+		dataType: string
+		lineageTag: e7ce9430-2187-4b3b-9d78-99c115cd9a7f
+		summarizeBy: none
+		sourceColumn: ingredient_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column waste_reason
+		dataType: string
+		lineageTag: 097caaf7-22f3-49a5-972e-623453c20073
+		summarizeBy: none
+		sourceColumn: waste_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: double
+		lineageTag: ed582e26-59b9-4592-aeb1-d1bff6f0ff0a
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unit_cost
+		dataType: double
+		lineageTag: ed599da3-c5ac-4942-b4d5-7ef42c7b07ca
+		summarizeBy: sum
+		sourceColumn: unit_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column waste_cost
+		dataType: double
+		lineageTag: f4042182-1291-41e5-bc0e-5a57ba69203e
+		summarizeBy: sum
+		sourceColumn: waste_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_wastage = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_wastage.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"waste_id", type text}, {"date", type date}, {"branch_id", type text}, {"ingredient_id", type text}, {"waste_reason", type text}, {"quantity", type number}, {"unit_cost", type number}, {"waste_cost", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

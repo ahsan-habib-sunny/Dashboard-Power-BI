@@ -1,0 +1,49 @@
+table dim_channel
+	lineageTag: dc8a8339-a3b3-4e0c-8684-7ace4a0561bd
+
+	column channel_id
+		dataType: string
+		lineageTag: 7099f67f-700a-405e-b4c1-222a2af20dbd
+		summarizeBy: none
+		sourceColumn: channel_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel_name
+		dataType: string
+		lineageTag: f294b399-ede6-455b-9b5e-1b75e8370103
+		summarizeBy: none
+		sourceColumn: channel_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel_group
+		dataType: string
+		lineageTag: ab3b38f7-da0c-4eea-89ba-89954af8a63f
+		summarizeBy: none
+		sourceColumn: channel_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column commission_rate
+		dataType: double
+		lineageTag: 1328adc5-1eea-4358-ab70-4f7afdd3d078
+		summarizeBy: sum
+		sourceColumn: commission_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_channel = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_channel.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"channel_id", type text}, {"channel_name", type text}, {"channel_group", type text}, {"commission_rate", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

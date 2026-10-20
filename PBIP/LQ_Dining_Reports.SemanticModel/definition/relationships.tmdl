@@ -1,0 +1,146 @@
+relationship AutoDetected_ed4076ff-4659-4843-b2d1-dd73f945835c
+	fromColumn: bridge_recipe.ingredient_id
+	toColumn: dim_ingredient.ingredient_id
+
+relationship AutoDetected_56e99a28-c1ed-4150-9da2-c9618e07af98
+	fromColumn: bridge_recipe.menu_item_id
+	toColumn: dim_menu_item.menu_item_id
+
+relationship AutoDetected_617336a6-5568-41c7-b2e0-222e1c02de88
+	fromColumn: fact_bookings.branch_id
+	toColumn: dim_branch.branch_id
+
+relationship AutoDetected_4d871b2b-ac15-4e13-b8ef-55b4e586b45f
+	fromColumn: fact_bookings.customer_id
+	toColumn: dim_customer.customer_id
+
+relationship AutoDetected_2ba058f3-8215-4e11-9c48-1008ca9bb8ee
+	fromColumn: fact_budget.branch_id
+	toColumn: dim_branch.branch_id
+
+relationship AutoDetected_4c37d63e-cf5a-4810-8daa-8814c23c5e7f
+	fromColumn: fact_labour_shifts.branch_id
+	toColumn: dim_branch.branch_id
+
+relationship AutoDetected_7acb75b1-c57d-4aaa-be43-d5d20baa3ed3
+	fromColumn: fact_marketing_spend.campaign_id
+	toColumn: dim_campaign.campaign_id
+
+relationship AutoDetected_f10da93d-32c5-4ae5-99cd-96e2006e67f7
+	fromColumn: fact_orders.branch_id
+	toColumn: dim_branch.branch_id
+
+relationship AutoDetected_a1e5eaca-db1b-4d66-aa9f-085fb265ee57
+	fromColumn: fact_orders.campaign_id
+	toColumn: dim_campaign.campaign_id
+
+relationship AutoDetected_fc80ef6c-7a64-4548-a608-28d7d7d9376e
+	fromColumn: fact_orders.channel_id
+	toColumn: dim_channel.channel_id
+
+relationship AutoDetected_006fd6b0-6113-4a5d-8636-b280cc47096d
+	fromColumn: fact_orders.customer_id
+	toColumn: dim_customer.customer_id
+
+relationship AutoDetected_062aaa8d-e1fc-4083-8596-2a28fdeede50
+	fromColumn: fact_orders.hour
+	toColumn: dim_time.hour
+
+relationship AutoDetected_d3a6e7aa-f55e-4a68-a0d3-7a360e228d54
+	fromColumn: fact_purchases.ingredient_id
+	toColumn: dim_ingredient.ingredient_id
+
+relationship AutoDetected_c83ab5d5-e802-40b3-bc70-3375973362fc
+	fromColumn: fact_purchases.branch_id
+	toColumn: dim_branch.branch_id
+
+relationship AutoDetected_b68aa7f9-503e-4773-a75d-3b3e4071197d
+	fromColumn: fact_reviews.branch_id
+	toColumn: dim_branch.branch_id
+
+relationship AutoDetected_e1286a8a-7e57-49e1-9a2d-d6bf45c3bf57
+	fromColumn: fact_sales_lines.menu_item_id
+	toColumn: dim_menu_item.menu_item_id
+
+relationship AutoDetected_270285ef-c5c2-4c26-b234-3721faaa7569
+	fromColumn: fact_sales_lines.branch_id
+	toColumn: dim_branch.branch_id
+
+relationship AutoDetected_1aa1003a-e592-451b-ae1d-308705dde0c9
+	fromColumn: fact_sales_lines.campaign_id
+	toColumn: dim_campaign.campaign_id
+
+relationship AutoDetected_9278c619-bc84-49e4-a68a-ec722713bbee
+	fromColumn: fact_sales_lines.channel_id
+	toColumn: dim_channel.channel_id
+
+relationship AutoDetected_6d8788f5-0b97-4b64-be98-47f226ae9cbd
+	fromColumn: fact_sales_lines.customer_id
+	toColumn: dim_customer.customer_id
+
+relationship AutoDetected_6dc27349-72db-4a89-893a-db922f69a7cf
+	fromColumn: fact_sales_lines.hour
+	toColumn: dim_time.hour
+
+relationship AutoDetected_a83e8db2-65f2-495c-aa58-1326b86e9cd9
+	fromColumn: fact_wastage.ingredient_id
+	toColumn: dim_ingredient.ingredient_id
+
+relationship AutoDetected_bd01d4f3-fc3e-4291-a2fa-5ff134f2155e
+	fromColumn: fact_wastage.branch_id
+	toColumn: dim_branch.branch_id
+
+relationship fact_sales_lines_date_dim_date_date
+	fromColumn: fact_sales_lines.date
+	toColumn: dim_date.date
+
+relationship fact_orders_date_dim_date_date
+	fromColumn: fact_orders.date
+	toColumn: dim_date.date
+
+relationship fact_labour_shifts_date_dim_date_date
+	fromColumn: fact_labour_shifts.date
+	toColumn: dim_date.date
+
+relationship fact_purchases_delivery_date_dim_date_date
+	fromColumn: fact_purchases.delivery_date
+	toColumn: dim_date.date
+
+relationship fact_wastage_date_dim_date_date
+	fromColumn: fact_wastage.date
+	toColumn: dim_date.date
+
+relationship fact_reviews_review_date_dim_date_date
+	fromColumn: fact_reviews.review_date
+	toColumn: dim_date.date
+
+relationship fact_marketing_spend_week_start_date_dim_date_date
+	fromColumn: fact_marketing_spend.week_start_date
+	toColumn: dim_date.date
+
+relationship fact_budget_month_start_dim_date_date
+	fromColumn: fact_budget.month_start
+	toColumn: dim_date.date
+
+relationship fact_bookings_visit_date_dim_date_date
+	fromColumn: fact_bookings.visit_date
+	toColumn: dim_date.date
+
+relationship fact_bookings_booking_created_date_dim_date_date
+	isActive: false
+	fromColumn: fact_bookings.booking_created_date
+	toColumn: dim_date.date
+
+relationship fact_labour_shifts_role_id_dim_role_role_id
+	fromColumn: fact_labour_shifts.role_id
+	toColumn: dim_role.role_id
+
+relationship fact_purchases_supplier_id_dim_supplier_supplier_id
+	fromColumn: fact_purchases.supplier_id
+	toColumn: dim_supplier.supplier_id
+
+relationship dim_ingredient_supplier_id_dim_supplier_supplier_id
+	isActive: false
+	fromColumn: dim_ingredient.supplier_id
+	toColumn: dim_supplier.supplier_id
+

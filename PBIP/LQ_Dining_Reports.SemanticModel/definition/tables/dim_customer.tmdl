@@ -1,0 +1,65 @@
+table dim_customer
+	lineageTag: 28230eb2-4ea7-44a5-b3c3-0c6fdeddae6e
+
+	column customer_id
+		dataType: string
+		lineageTag: 7f2010da-0b36-4ab2-9f09-57c8bce2dfc5
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column join_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ec907185-77f5-4688-9ed5-b17e78f20177
+		summarizeBy: none
+		sourceColumn: join_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column home_branch_id
+		dataType: string
+		lineageTag: d327f0ed-dd68-4882-87a2-0884d5208ebb
+		summarizeBy: none
+		sourceColumn: home_branch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_band
+		dataType: string
+		lineageTag: 51d2b450-3f92-428a-99de-552577f73ea8
+		summarizeBy: none
+		sourceColumn: age_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column acquisition_source
+		dataType: string
+		lineageTag: 07981b3a-dae8-4070-af2b-e907b54bb856
+		summarizeBy: none
+		sourceColumn: acquisition_source
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First Order Date' = CALCULATE (MIN(fact_orders[date]))
+		formatString: General Date
+		lineageTag: efb09f12-e847-41a2-ad8a-666a7514de8f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_customer = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_customer.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"customer_id", type text}, {"join_date", type date}, {"home_branch_id", type text}, {"age_band", type text}, {"acquisition_source", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

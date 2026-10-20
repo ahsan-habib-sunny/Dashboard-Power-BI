@@ -1,0 +1,67 @@
+table dim_ingredient
+	lineageTag: 1dfe0806-3756-4110-84ec-3731ada76ba8
+
+	column ingredient_id
+		dataType: string
+		lineageTag: 1938178f-3e68-464c-80d8-3ecda3d2fc63
+		summarizeBy: none
+		sourceColumn: ingredient_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ingredient_name
+		dataType: string
+		lineageTag: 57b6b77d-ba7b-41cb-88b2-7d6ee143e7a6
+		summarizeBy: none
+		sourceColumn: ingredient_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column ingredient_category
+		dataType: string
+		lineageTag: 0369a2d3-7d4d-48d7-a7d7-37a428a979d9
+		summarizeBy: none
+		sourceColumn: ingredient_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: ef3fd2c6-eab9-4462-a8b0-76e198d6f649
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column standard_cost_per_unit
+		dataType: double
+		lineageTag: 0c653996-aea8-4e74-9158-9435acaf045e
+		summarizeBy: sum
+		sourceColumn: standard_cost_per_unit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column supplier_id
+		dataType: string
+		lineageTag: f8c83a54-b550-4a17-b65d-39b5ae9a87bb
+		summarizeBy: none
+		sourceColumn: supplier_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_ingredient = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_ingredient.csv"),[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ingredient_id", type text}, {"ingredient_name", type text}, {"ingredient_category", type text}, {"unit", type text}, {"standard_cost_per_unit", type number}, {"supplier_id", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

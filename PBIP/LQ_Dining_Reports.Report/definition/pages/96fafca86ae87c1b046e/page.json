@@ -1,0 +1,110 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "96fafca86ae87c1b046e",
+  "displayName": "Branch Details",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "de5d5e283026746fe125",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_branch"
+              }
+            },
+            "Property": "branch_name"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "dim_branch",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "branch_name"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Didsbury'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "c4e5cfe7efe90681bcb3",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "10f154937f3a04582098",
+        "boundFilter": "de5d5e283026746fe125",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_branch"
+              }
+            },
+            "Property": "branch_name"
+          }
+        }
+      }
+    ],
+    "acceptsFilterContext": "None"
+  },
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "186L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "b91a99f1865d281bd270",
+      "target": "05a32a4f4450031df666",
+      "type": "NoFilter"
+    }
+  ]
+}

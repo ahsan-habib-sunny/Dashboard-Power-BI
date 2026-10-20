@@ -1,0 +1,43 @@
+table dim_time
+	lineageTag: 016ad5df-3a9b-4a18-9194-b8525f652a65
+
+	column hour
+		dataType: int64
+		formatString: 0
+		lineageTag: fc3a509c-9103-4d74-9000-41e7ef9ac49a
+		summarizeBy: none
+		sourceColumn: hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_label
+		dataType: dateTime
+		formatString: Short Time
+		lineageTag: 9f54a75b-4e2f-499b-8bec-7f30b2bde4e6
+		summarizeBy: none
+		sourceColumn: time_label
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column daypart
+		dataType: string
+		lineageTag: 2d9ece05-5a6b-4609-8c69-e679dc076a5a
+		summarizeBy: none
+		sourceColumn: daypart
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_time = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_time.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"hour", Int64.Type}, {"time_label", type time}, {"daypart", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

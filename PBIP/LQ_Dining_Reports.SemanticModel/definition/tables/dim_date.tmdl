@@ -1,0 +1,174 @@
+table dim_date
+	lineageTag: fb56085b-3ca4-422f-b992-e23641eacf11
+	dataCategory: Time
+
+	column date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: 1a412bcb-23b5-4e9b-a3e8-1d7ce140ca8b
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: a658ce24-050a-4e5c-b75c-e6dcdcaafeb3
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = User
+
+	column quarter
+		dataType: string
+		lineageTag: d26a3696-d499-442a-a149-ecd28bade9f5
+		summarizeBy: none
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_quarter
+		dataType: string
+		lineageTag: a9348d4b-720f-4bc8-8e1b-e304998d0fd5
+		summarizeBy: none
+		sourceColumn: year_quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ba630e4-7529-4a3f-b047-2efb3d560be2
+		summarizeBy: none
+		sourceColumn: month_number
+
+		annotation SummarizationSetBy = User
+
+	column month_name
+		dataType: string
+		lineageTag: 34814756-4f3d-4e0d-aba3-76c110b8cec7
+		summarizeBy: none
+		sourceColumn: month_name
+		sortByColumn: month_number
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_short
+		dataType: string
+		lineageTag: 541352c9-5d63-4026-b81e-95838d1df727
+		summarizeBy: none
+		sourceColumn: month_short
+		sortByColumn: month_number
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month
+		dataType: string
+		lineageTag: 41612e17-0607-4c13-81ce-acab49bb034e
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9a22e590-eb94-4517-b45a-dd9cf9326a73
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column week_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 200dca96-6d10-44a0-a479-9d3aeea44089
+		summarizeBy: none
+		sourceColumn: week_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column day_of_week_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 92a4b735-937f-4819-b52d-f8d2eaa419ff
+		summarizeBy: none
+		sourceColumn: day_of_week_number
+
+		annotation SummarizationSetBy = User
+
+	column day_name
+		dataType: string
+		lineageTag: 1e3e06b3-60aa-460b-9f32-7b38020b8c09
+		summarizeBy: none
+		sourceColumn: day_name
+		sortByColumn: day_of_week_number
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_short
+		dataType: string
+		lineageTag: 9bc96b5a-2167-410d-b47a-28124d9c87b2
+		summarizeBy: none
+		sourceColumn: day_short
+		sortByColumn: day_of_week_number
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c4ba4afc-024a-4f6c-b5da-fc27a4a58182
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_trading_day
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 576e4142-6831-4745-bfb7-c9d137ea40a2
+		summarizeBy: none
+		sourceColumn: is_trading_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_sales_data
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: beeefb47-87de-4cd1-b17f-c9f3fd5c802f
+		summarizeBy: none
+		sourceColumn: has_sales_data
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_date.csv"),[Delimiter=",", Columns=16, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date", type date}, {"year", Int64.Type}, {"quarter", type text}, {"year_quarter", type text}, {"month_number", Int64.Type}, {"month_name", type text}, {"month_short", type text}, {"year_month", type text}, {"month_start", type date}, {"week_start", type date}, {"day_of_week_number", Int64.Type}, {"day_name", type text}, {"day_short", type text}, {"is_weekend", type logical}, {"is_trading_day", type logical}, {"has_sales_data", type logical}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

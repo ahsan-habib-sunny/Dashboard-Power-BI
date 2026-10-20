@@ -1,0 +1,139 @@
+table fact_sales_lines
+	lineageTag: acbc1c2d-d652-426d-9bc2-c8afae459376
+
+	column sales_line_id
+		dataType: string
+		lineageTag: c4688589-e11b-451f-bed2-59e76bd00f0c
+		summarizeBy: none
+		sourceColumn: sales_line_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: string
+		lineageTag: 1e9b1e2d-3bd3-4cbf-91af-303d7f31001d
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 226cf3fc-ad15-46a9-af27-450c56994e1e
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 11d42950-8a05-4648-a216-3affc8089b54
+		summarizeBy: none
+		sourceColumn: hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column branch_id
+		dataType: string
+		lineageTag: f47e6071-ee4a-4c14-88ef-d5554a3340e3
+		summarizeBy: none
+		sourceColumn: branch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel_id
+		dataType: string
+		lineageTag: 5f1898c9-aca6-49a8-881e-5b42d98d01f2
+		summarizeBy: none
+		sourceColumn: channel_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column menu_item_id
+		dataType: string
+		lineageTag: ba4663bf-5f83-4b5b-b7b9-169c12130929
+		summarizeBy: none
+		sourceColumn: menu_item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 02b57d3d-4ebf-4c56-aa5e-87136131442b
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_id
+		dataType: string
+		lineageTag: c8714e3a-7ee1-4a17-8a28-b610029016e1
+		summarizeBy: none
+		sourceColumn: campaign_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 16fe9fb4-97ce-4aa9-9eee-df7dd51210ca
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_price
+		dataType: double
+		lineageTag: 5a0c3c6e-d12e-4403-92dc-526c60c884fa
+		summarizeBy: sum
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column gross_amount
+		dataType: double
+		lineageTag: 8bd42a3b-74bd-4ff5-90d5-2d337ffa504a
+		summarizeBy: sum
+		sourceColumn: gross_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column discount_amount
+		dataType: int64
+		formatString: 0
+		lineageTag: 2594f62d-ad5f-495f-8b3d-7c6388200ba7
+		summarizeBy: sum
+		sourceColumn: discount_amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_amount
+		dataType: double
+		lineageTag: ced224d8-c1d2-4c6f-b3ba-17240ee472e5
+		summarizeBy: sum
+		sourceColumn: net_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_sales_lines = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_sales_lines.csv"),[Delimiter=",", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"sales_line_id", type text}, {"order_id", type text}, {"date", type date}, {"hour", Int64.Type}, {"branch_id", type text}, {"channel_id", type text}, {"menu_item_id", type text}, {"customer_id", type text}, {"campaign_id", type text}, {"quantity", Int64.Type}, {"unit_price", type number}, {"gross_amount", type number}, {"discount_amount", Int64.Type}, {"net_amount", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,78 @@
+table fact_marketing_spend
+	lineageTag: e3eeb5b3-ab57-4451-92aa-eb460a8d8028
+
+	column spend_id
+		dataType: string
+		lineageTag: c81c2c3b-8c21-4b83-b961-9ec4de457a27
+		summarizeBy: none
+		sourceColumn: spend_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d49cb706-71d5-4921-b83a-cd208e51dbcc
+		summarizeBy: none
+		sourceColumn: week_start_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column campaign_id
+		dataType: string
+		lineageTag: da6a81fe-9f99-4920-aa08-762133510041
+		summarizeBy: none
+		sourceColumn: campaign_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column marketing_channel
+		dataType: string
+		lineageTag: 00ff9917-3883-4ccf-b1ed-564c6857820d
+		summarizeBy: none
+		sourceColumn: marketing_channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column spend
+		dataType: double
+		lineageTag: 77eec061-c2bd-47aa-9412-267ef28ac12e
+		summarizeBy: sum
+		sourceColumn: spend
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column impressions
+		dataType: int64
+		formatString: 0
+		lineageTag: 8fc9678c-95fa-4b88-996f-cbb665d38310
+		summarizeBy: sum
+		sourceColumn: impressions
+
+		annotation SummarizationSetBy = Automatic
+
+	column clicks
+		dataType: int64
+		formatString: 0
+		lineageTag: 87745274-fca1-498b-9470-2135e221b189
+		summarizeBy: sum
+		sourceColumn: clicks
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_marketing_spend = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_marketing_spend.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"spend_id", type text}, {"week_start_date", type date}, {"campaign_id", type text}, {"marketing_channel", type text}, {"spend", type number}, {"impressions", Int64.Type}, {"clicks", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

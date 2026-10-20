@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "00128baab5837b7396bd",
+  "displayName": "Kitchen & Menu",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "186L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "d37795b21a3528fc76b8",
+      "target": "ab6934181ff2e2465f46",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d37795b21a3528fc76b8",
+      "target": "0b51e18d525bfe3faaad",
+      "type": "DataFilter"
+    },
+    {
+      "source": "d37795b21a3528fc76b8",
+      "target": "374c6b53b3618e2e60c8",
+      "type": "DataFilter"
+    }
+  ]
+}

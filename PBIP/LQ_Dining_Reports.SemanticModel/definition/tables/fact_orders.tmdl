@@ -1,0 +1,103 @@
+table fact_orders
+	lineageTag: eee73b34-1bd9-4ad4-913c-e494649005ae
+
+	column order_id
+		dataType: string
+		lineageTag: c3c91974-ef18-4fc5-bc59-3f0e29005356
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1890f15e-da18-40e9-acf1-7ec1dbf4cc91
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column hour
+		dataType: int64
+		formatString: 0
+		lineageTag: b7988178-7759-4edd-93be-72ee91d100ae
+		summarizeBy: none
+		sourceColumn: hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column branch_id
+		dataType: string
+		lineageTag: b56a4c2c-b1b0-4f16-b5e9-e0eae3bf0a6b
+		summarizeBy: none
+		sourceColumn: branch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel_id
+		dataType: string
+		lineageTag: a1d8a0fd-06b2-4fe7-a73a-91cd56f5e9be
+		summarizeBy: none
+		sourceColumn: channel_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: 4bed9b0f-7ecb-4bdf-9779-8da7f96d65c7
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_id
+		dataType: string
+		lineageTag: fd5b179e-59c3-48f0-aa0d-f106c944a9eb
+		summarizeBy: none
+		sourceColumn: campaign_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column covers
+		dataType: int64
+		formatString: 0
+		lineageTag: 810c5600-1b65-4054-9d53-91c57f918bd7
+		summarizeBy: sum
+		sourceColumn: covers
+
+		annotation SummarizationSetBy = Automatic
+
+	column items
+		dataType: int64
+		formatString: 0
+		lineageTag: c221e48f-fee8-476c-8493-5e693d2350be
+		summarizeBy: sum
+		sourceColumn: items
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_net_amount
+		dataType: double
+		lineageTag: a64c6cf5-2bf2-4bc7-9bab-4e8ee04da626
+		summarizeBy: sum
+		sourceColumn: order_net_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_orders = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_orders.csv"),[Delimiter=",", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"order_id", type text}, {"date", type date}, {"hour", Int64.Type}, {"branch_id", type text}, {"channel_id", type text}, {"customer_id", type text}, {"campaign_id", type text}, {"covers", Int64.Type}, {"items", Int64.Type}, {"order_net_amount", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

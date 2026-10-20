@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "LQ_Dining_Reports"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5d951dca-5987-4343-a9a9-b6f2554d5f73"
+  }
+}

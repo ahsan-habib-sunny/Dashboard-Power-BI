@@ -1,0 +1,39 @@
+table dim_role
+	lineageTag: 555c3a55-198e-4072-8737-e586bebbcec0
+
+	column role_id
+		dataType: string
+		lineageTag: a0c12044-08a9-442f-95e9-68bd67dd91b0
+		summarizeBy: none
+		sourceColumn: role_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column role_name
+		dataType: string
+		lineageTag: 16af5e88-16b1-4e97-9768-0b9580ba9f4d
+		summarizeBy: none
+		sourceColumn: role_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column department
+		dataType: string
+		lineageTag: 779dafcb-2cba-4782-b9e8-6ef7bae7c12c
+		summarizeBy: none
+		sourceColumn: department
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_role = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_role.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"role_id", type text}, {"role_name", type text}, {"department", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

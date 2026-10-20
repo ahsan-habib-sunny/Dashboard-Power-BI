@@ -1,0 +1,88 @@
+table fact_purchases
+	lineageTag: 62699074-507d-4abd-b4ec-64b5af4750f4
+
+	column purchase_line_id
+		dataType: string
+		lineageTag: 3fafba42-a2de-4302-8938-e276b9e2c9e6
+		summarizeBy: none
+		sourceColumn: purchase_line_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column delivery_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 99404770-38ec-4f46-9343-94b385255830
+		summarizeBy: none
+		sourceColumn: delivery_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column branch_id
+		dataType: string
+		lineageTag: a6e7b842-e108-4e7e-85e1-c6b6f579870b
+		summarizeBy: none
+		sourceColumn: branch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column supplier_id
+		dataType: string
+		lineageTag: 594f4d4d-64bf-4b87-a97c-41023e68d81f
+		summarizeBy: none
+		sourceColumn: supplier_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ingredient_id
+		dataType: string
+		lineageTag: e9a5ce53-0297-41df-a3bc-f85ba0d3b36f
+		summarizeBy: none
+		sourceColumn: ingredient_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: double
+		lineageTag: 233b7118-b78f-4012-bac3-eb6274d3aee4
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unit_cost
+		dataType: double
+		lineageTag: 7b766a92-98af-4163-ba64-97bec477e030
+		summarizeBy: sum
+		sourceColumn: unit_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column line_cost
+		dataType: double
+		lineageTag: 249cf8ce-22e8-4651-b191-fbc644fe9d0c
+		summarizeBy: sum
+		sourceColumn: line_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_purchases = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_purchases.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"purchase_line_id", type text}, {"delivery_date", type date}, {"branch_id", type text}, {"supplier_id", type text}, {"ingredient_id", type text}, {"quantity", type number}, {"unit_cost", type number}, {"line_cost", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

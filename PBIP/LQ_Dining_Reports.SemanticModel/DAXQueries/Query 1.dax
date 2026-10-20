@@ -1,0 +1,4 @@
+DEFINE
+    MEASURE _Measures[Group Prime Cost %] = 
+        CALCULATE ( [Prime Cost %], REMOVEFILTERS ( dim_branch ) )
+

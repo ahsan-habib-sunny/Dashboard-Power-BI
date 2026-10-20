@@ -1,0 +1,80 @@
+table dim_menu_item
+	lineageTag: a91d3096-6a46-4bc8-8fcd-20b214a6765d
+
+	column menu_item_id
+		dataType: string
+		lineageTag: b074ab24-af39-4242-ba4d-eba032ff1e71
+		summarizeBy: none
+		sourceColumn: menu_item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column menu_item_name
+		dataType: string
+		lineageTag: a3fd9cb9-862f-491d-abae-f24eb763237a
+		summarizeBy: none
+		sourceColumn: menu_item_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: d71c0a48-0be5-450a-bc1c-cbc8525fd58d
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column menu_section
+		dataType: string
+		lineageTag: 1e2b6790-8d78-4665-9cbe-e1dce45d132c
+		summarizeBy: none
+		sourceColumn: menu_section
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_price
+		dataType: double
+		lineageTag: d8a46b9a-b981-412f-a2ab-e89a2314bcf6
+		summarizeBy: sum
+		sourceColumn: current_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column is_vegetarian
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 81e27079-f055-4121-9027-820036f89a1d
+		summarizeBy: none
+		sourceColumn: is_vegetarian
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Recipe Cost' = ```
+			
+			    SUMX(RELATEDTABLE(bridge_recipe), bridge_recipe[quantity_per_portion] * RELATED(dim_ingredient[standard_cost_per_unit]))
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 3bc508fb-545c-4e37-82ba-53547662fde1
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	partition dim_menu_item = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_menu_item.csv"),[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"menu_item_id", type text}, {"menu_item_name", type text}, {"category", type text}, {"menu_section", type text}, {"current_price", type number}, {"is_vegetarian", type logical}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

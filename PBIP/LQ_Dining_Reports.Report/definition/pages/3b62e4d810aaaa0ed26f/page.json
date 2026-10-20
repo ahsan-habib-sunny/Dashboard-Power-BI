@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "3b62e4d810aaaa0ed26f",
+  "displayName": "Sales & Operations",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "186L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "b3af1b1600e3637c4293",
+      "target": "8c5baf3cd054dae6a163",
+      "type": "NoFilter"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "1109f7156f572d617a20",
+  "displayName": "Finance & Labour",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "186L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "a302523c7c719ea72536",
+      "target": "e8191fc429f117540041",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a302523c7c719ea72536",
+      "target": "dab08c3361448afefd20",
+      "type": "DataFilter"
+    },
+    {
+      "source": "a302523c7c719ea72536",
+      "target": "2950d8e92ebf99f23ef8",
+      "type": "DataFilter"
+    },
+    {
+      "source": "a302523c7c719ea72536",
+      "target": "4f33acf9112135c49025",
+      "type": "NoFilter"
+    }
+  ]
+}
