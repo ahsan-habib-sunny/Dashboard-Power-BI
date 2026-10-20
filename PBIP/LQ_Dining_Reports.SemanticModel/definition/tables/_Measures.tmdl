@@ -683,13 +683,11 @@ table _Measures
 			    dim_branch,
 			    VAR OpenDate = dim_branch[opening_date]
 			    VAR TradingDays =
-			        COUNTROWS (
-			            FILTER (
-			                dim_date,
-			                dim_date[is_trading_day] = TRUE ()
-			                    && dim_date[has_sales_data] = TRUE ()
-			                    && dim_date[date] >= OpenDate
-			            )
+			        CALCULATE (
+			            COUNTROWS ( dim_date ),
+			            KEEPFILTERS ( dim_date[is_trading_day] = TRUE () ),
+			            KEEPFILTERS ( dim_date[has_sales_data] = TRUE () ),
+			            KEEPFILTERS ( dim_date[date] >= OpenDate )
 			        )
 			    RETURN
 			        dim_branch[seats] * dim_branch[trading_hours_per_day] * TradingDays
