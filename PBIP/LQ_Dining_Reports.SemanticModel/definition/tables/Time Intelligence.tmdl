@@ -73,9 +73,8 @@ table 'Time Intelligence'
 				
 				    VAR DatesWithData = CALCULATETABLE ( VALUES ( dim_date[date] ), dim_date[has_sales_data] = TRUE () )
 				    VAR FirstDateLY = MINX ( SAMEPERIODLASTYEAR ( DatesWithData ), dim_date[date] )
-				    VAR LFLBranches = FILTER ( dim_branch, dim_branch[opening_date] <= FirstDateLY )
-				    VAR Cur = CALCULATE ( SELECTEDMEASURE (), LFLBranches )
-				    VAR LY  = CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( DatesWithData ), LFLBranches )
+				    VAR Cur = CALCULATE ( SELECTEDMEASURE (), KEEPFILTERS ( dim_branch[opening_date] <= FirstDateLY ) )
+				    VAR LY  = CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( DatesWithData ), KEEPFILTERS ( dim_branch[opening_date] <= FirstDateLY ) )
 				    RETURN
 				        DIVIDE ( Cur - LY, LY )
 				```

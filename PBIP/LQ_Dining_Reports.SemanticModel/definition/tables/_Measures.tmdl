@@ -191,7 +191,7 @@ table _Measures
 
 		changedProperty = IsHidden
 
-	measure 'LFL Net Sales LY' = CALCULATE([Net Sales LY], 'Time Intelligence'[Time Calc] = "LFL LY")
+	measure 'LFL Net Sales LY' = CALCULATE([Net Sales], 'Time Intelligence'[Time Calc] = "LFL LY")
 		formatString: "£"#,0;-"£"#,0;"£"#,0
 		displayFolder: Time Intelligence
 		lineageTag: 458814f3-1d1f-47ed-965a-06e8f985ef61
@@ -736,7 +736,13 @@ table _Measures
 
 		changedProperty = IsHidden
 
-	measure 'Popularity Threshold' = 0.7 / CALCULATE(DISTINCTCOUNT(fact_sales_lines[menu_item_id]), ALLSELECTED(dim_menu_item ))
+	measure 'Popularity Threshold' = ```
+			
+			    DIVIDE (
+			        0.7,
+			        CALCULATE ( DISTINCTCOUNT ( fact_sales_lines[menu_item_id] ), ALLSELECTED ( dim_menu_item ) )
+			    )
+			```
 		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: Menu Engineering
 		lineageTag: 1b63203c-224d-4dd5-9f41-48c242de5373
@@ -753,19 +759,28 @@ table _Measures
 	measure 'Menu Class' =
 			
 			IF (
-			    HASONEVALUE(dim_menu_item[menu_item_name]),
-			    SWITCH(
-			        TRUE(),
-			        [Menu Mix %] >= [Popularity Threshold] && [Profit per Plate] >= [Avg Profit per Plate], "Star",
-			        [Menu Mix %] >= [Popularity Threshold], "Plowhorse",
-			        [Profit per Plate] >= [Avg Profit per Plate], "Puzzle",
-			        "Dog"
-			    )
+			    HASONEVALUE ( dim_menu_item[menu_item_name] ),
+			    VAR MixPct       = [Menu Mix %]
+			    VAR Threshold    = [Popularity Threshold]
+			    VAR Profit       = [Profit per Plate]
+			    VAR AvgProfit    = [Avg Profit per Plate]
+			    VAR IsPopular    = MixPct >= Threshold
+			    VAR IsProfitable = Profit >= AvgProfit
+			    RETURN
+			        SWITCH (
+			            TRUE (),
+			            IsPopular && IsProfitable, "Star",
+			            IsPopular,                 "Plowhorse",
+			            IsProfitable,              "Puzzle",
+			            "Dog"
+			        )
 			)
 		displayFolder: Menu Engineering
 		lineageTag: 12d92aaf-393a-44d4-a1f4-a999366c01e1
 
 		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Menu Class Colour' =
 			
