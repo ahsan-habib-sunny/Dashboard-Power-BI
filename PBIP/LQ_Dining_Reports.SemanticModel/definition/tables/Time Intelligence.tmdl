@@ -61,10 +61,11 @@ table 'Time Intelligence'
 
 	column Ordinal
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 3b577895-4a71-4997-a53e-5e13ffd20541
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Ordinal
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
