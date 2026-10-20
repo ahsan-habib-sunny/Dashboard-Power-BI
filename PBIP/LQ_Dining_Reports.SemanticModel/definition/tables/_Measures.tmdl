@@ -136,10 +136,8 @@ table _Measures
 		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
 
 	measure 'Net Sales LY' = ```
+			CALCULATE([Net Sales], 'Time Intelligence'[Time Calc] = "LY")
 			
-			    VAR DatesWithData = 
-			        CALCULATETABLE(VALUES(dim_date[date]), dim_date[has_sales_data] = TRUE())
-			        RETURN CALCULATE([Net Sales], SAMEPERIODLASTYEAR(DatesWithData))
 			```
 		formatString: "£"#,0;-"£"#,0;"£"#,0
 		displayFolder: Time Intelligence
@@ -159,14 +157,14 @@ table _Measures
 		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
 
 	/// Net sales compared with the same period last year, as a %
-	measure 'Net Sales YoY %' = DIVIDE([Net Sales YoY], [Net Sales LY])
+	measure 'Net Sales YoY %' = CALCULATE ( [Net Sales], 'Time Intelligence'[Time Calc] = "YoY %" )
 		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: Time Intelligence
 		lineageTag: aa55f41d-87eb-4f33-affa-687cc9cb7d74
 
 		changedProperty = IsHidden
 
-	measure 'Net Sales YTD' = TOTALYTD([Net Sales], dim_date[date])
+	measure 'Net Sales YTD' = CALCULATE ( [Net Sales], 'Time Intelligence'[Time Calc] = "YTD" )
 		formatString: "£"#,0;-"£"#,0;"£"#,0
 		displayFolder: Time Intelligence
 		lineageTag: 81c7adc3-262a-404d-b07e-9507f7f6fc87
@@ -175,7 +173,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
 
-	measure 'Net Sales YTD LY' = TOTALYTD([Net Sales LY], dim_date[date])
+	measure 'Net Sales YTD LY' = CALCULATE ( [Net Sales], 'Time Intelligence'[Time Calc] = "YTD LY" )
 		formatString: "£"#,0;-"£"#,0;"£"#,0
 		displayFolder: Time Intelligence
 		lineageTag: 34164763-f979-472f-bc70-31f3422c9a57
@@ -184,7 +182,9 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
 
-	measure 'Net Sales YTD YoY %' = DIVIDE ( [Net Sales YTD] - [Net Sales YTD LY], [Net Sales YTD LY] )
+	measure 'Net Sales YTD YoY %' =
+			
+			CALCULATE ( [Net Sales], 'Time Intelligence'[Time Calc] = "YTD YoY %" )
 		formatString: 0%;-0%;0%
 		displayFolder: Time Intelligence
 		lineageTag: 214145cc-be4a-4536-b308-06765cc0c47c

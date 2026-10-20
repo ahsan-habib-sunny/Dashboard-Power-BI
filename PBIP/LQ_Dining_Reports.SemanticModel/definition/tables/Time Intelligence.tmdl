@@ -39,7 +39,7 @@ table 'Time Intelligence'
 				    RETURN CALCULATE(SELECTEDMEASURE(), SAMEPERIODLASTYEAR(YTDDate))
 				```
 
-		calculationItem 'YTD YoY%' =
+		calculationItem 'YTD YoY %' =
 				
 				VAR YTDDates =
 				    CALCULATETABLE ( DATESYTD ( dim_date[date] ), dim_date[has_sales_data] = TRUE () )
