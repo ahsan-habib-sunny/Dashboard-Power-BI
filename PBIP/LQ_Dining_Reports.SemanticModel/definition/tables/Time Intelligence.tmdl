@@ -35,7 +35,7 @@ table 'Time Intelligence'
 
 		calculationItem 'YTD LY' = ```
 				
-				    VAR YTDDate = CALCULATETABLE(VALUES(dim_date[date]), dim_date[has_sales_data] = TRUE())
+				    VAR YTDDate = CALCULATETABLE(DATESYTD(dim_date[date]), dim_date[has_sales_data] = TRUE())
 				    RETURN CALCULATE(SELECTEDMEASURE(), SAMEPERIODLASTYEAR(YTDDate))
 				```
 
