@@ -7,6 +7,8 @@ table fact_marketing_spend
 		summarizeBy: none
 		sourceColumn: spend_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column week_start_date
@@ -15,6 +17,8 @@ table fact_marketing_spend
 		lineageTag: d49cb706-71d5-4921-b83a-cd208e51dbcc
 		summarizeBy: none
 		sourceColumn: week_start_date
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -26,6 +30,8 @@ table fact_marketing_spend
 		summarizeBy: none
 		sourceColumn: campaign_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column marketing_channel
@@ -34,6 +40,8 @@ table fact_marketing_spend
 		summarizeBy: none
 		sourceColumn: marketing_channel
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column spend
@@ -41,6 +49,8 @@ table fact_marketing_spend
 		lineageTag: 77eec061-c2bd-47aa-9412-267ef28ac12e
 		summarizeBy: sum
 		sourceColumn: spend
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -53,6 +63,8 @@ table fact_marketing_spend
 		summarizeBy: sum
 		sourceColumn: impressions
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column clicks
@@ -61,6 +73,8 @@ table fact_marketing_spend
 		lineageTag: 87745274-fca1-498b-9470-2135e221b189
 		summarizeBy: sum
 		sourceColumn: clicks
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

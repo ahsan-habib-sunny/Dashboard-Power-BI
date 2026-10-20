@@ -7,6 +7,8 @@ table fact_orders
 		summarizeBy: none
 		sourceColumn: order_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column date
@@ -15,6 +17,8 @@ table fact_orders
 		lineageTag: 1890f15e-da18-40e9-acf1-7ec1dbf4cc91
 		summarizeBy: none
 		sourceColumn: date
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -27,6 +31,8 @@ table fact_orders
 		summarizeBy: none
 		sourceColumn: hour
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column branch_id
@@ -34,6 +40,8 @@ table fact_orders
 		lineageTag: b56a4c2c-b1b0-4f16-b5e9-e0eae3bf0a6b
 		summarizeBy: none
 		sourceColumn: branch_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -43,6 +51,8 @@ table fact_orders
 		summarizeBy: none
 		sourceColumn: channel_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column customer_id
@@ -51,6 +61,8 @@ table fact_orders
 		summarizeBy: none
 		sourceColumn: customer_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column campaign_id
@@ -58,6 +70,8 @@ table fact_orders
 		lineageTag: fd5b179e-59c3-48f0-aa0d-f106c944a9eb
 		summarizeBy: none
 		sourceColumn: campaign_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -68,6 +82,8 @@ table fact_orders
 		summarizeBy: sum
 		sourceColumn: covers
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column items
@@ -77,6 +93,8 @@ table fact_orders
 		summarizeBy: sum
 		sourceColumn: items
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column order_net_amount
@@ -84,6 +102,8 @@ table fact_orders
 		lineageTag: a64c6cf5-2bf2-4bc7-9bab-4e8ee04da626
 		summarizeBy: sum
 		sourceColumn: order_net_amount
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

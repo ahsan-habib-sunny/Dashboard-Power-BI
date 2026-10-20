@@ -7,6 +7,8 @@ table dim_menu_item
 		summarizeBy: none
 		sourceColumn: menu_item_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column menu_item_name
@@ -14,6 +16,8 @@ table dim_menu_item
 		lineageTag: a3fd9cb9-862f-491d-abae-f24eb763237a
 		summarizeBy: none
 		sourceColumn: menu_item_name
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -23,6 +27,8 @@ table dim_menu_item
 		summarizeBy: none
 		sourceColumn: category
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column menu_section
@@ -31,6 +37,8 @@ table dim_menu_item
 		summarizeBy: none
 		sourceColumn: menu_section
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column current_price
@@ -38,6 +46,8 @@ table dim_menu_item
 		lineageTag: d8a46b9a-b981-412f-a2ab-e89a2314bcf6
 		summarizeBy: sum
 		sourceColumn: current_price
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -50,6 +60,8 @@ table dim_menu_item
 		summarizeBy: none
 		sourceColumn: is_vegetarian
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column 'Recipe Cost' = ```
@@ -59,6 +71,8 @@ table dim_menu_item
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: 3bc508fb-545c-4e37-82ba-53547662fde1
 		summarizeBy: sum
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

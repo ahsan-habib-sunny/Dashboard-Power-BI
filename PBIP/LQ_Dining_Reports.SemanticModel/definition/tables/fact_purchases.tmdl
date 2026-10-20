@@ -7,6 +7,8 @@ table fact_purchases
 		summarizeBy: none
 		sourceColumn: purchase_line_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column delivery_date
@@ -15,6 +17,8 @@ table fact_purchases
 		lineageTag: 99404770-38ec-4f46-9343-94b385255830
 		summarizeBy: none
 		sourceColumn: delivery_date
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -26,6 +30,8 @@ table fact_purchases
 		summarizeBy: none
 		sourceColumn: branch_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column supplier_id
@@ -33,6 +39,8 @@ table fact_purchases
 		lineageTag: 594f4d4d-64bf-4b87-a97c-41023e68d81f
 		summarizeBy: none
 		sourceColumn: supplier_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -42,6 +50,8 @@ table fact_purchases
 		summarizeBy: none
 		sourceColumn: ingredient_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column quantity
@@ -49,6 +59,8 @@ table fact_purchases
 		lineageTag: 233b7118-b78f-4012-bac3-eb6274d3aee4
 		summarizeBy: sum
 		sourceColumn: quantity
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -60,6 +72,8 @@ table fact_purchases
 		summarizeBy: sum
 		sourceColumn: unit_cost
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -69,6 +83,8 @@ table fact_purchases
 		lineageTag: 249cf8ce-22e8-4651-b191-fbc644fe9d0c
 		summarizeBy: sum
 		sourceColumn: line_cost
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

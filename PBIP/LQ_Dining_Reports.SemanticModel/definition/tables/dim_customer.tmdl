@@ -7,6 +7,8 @@ table dim_customer
 		summarizeBy: none
 		sourceColumn: customer_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column join_date
@@ -15,6 +17,8 @@ table dim_customer
 		lineageTag: ec907185-77f5-4688-9ed5-b17e78f20177
 		summarizeBy: none
 		sourceColumn: join_date
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -26,6 +30,8 @@ table dim_customer
 		summarizeBy: none
 		sourceColumn: home_branch_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column age_band
@@ -33,6 +39,8 @@ table dim_customer
 		lineageTag: 51d2b450-3f92-428a-99de-552577f73ea8
 		summarizeBy: none
 		sourceColumn: age_band
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -42,12 +50,16 @@ table dim_customer
 		summarizeBy: none
 		sourceColumn: acquisition_source
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column 'First Order Date' = CALCULATE (MIN(fact_orders[date]))
 		formatString: General Date
 		lineageTag: efb09f12-e847-41a2-ad8a-666a7514de8f
 		summarizeBy: none
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

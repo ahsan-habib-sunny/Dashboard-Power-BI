@@ -7,6 +7,8 @@ table dim_branch
 		summarizeBy: none
 		sourceColumn: branch_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column branch_name
@@ -14,6 +16,8 @@ table dim_branch
 		lineageTag: 94d8d1c2-3521-4128-a1b6-10f8359dca6c
 		summarizeBy: none
 		sourceColumn: branch_name
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -23,6 +27,8 @@ table dim_branch
 		summarizeBy: none
 		sourceColumn: area_type
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column postcode
@@ -30,6 +36,8 @@ table dim_branch
 		lineageTag: bcd1dac9-355a-4160-82d0-61673fa2e1ce
 		summarizeBy: none
 		sourceColumn: postcode
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -40,6 +48,8 @@ table dim_branch
 		summarizeBy: sum
 		sourceColumn: seats
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column opening_date
@@ -48,6 +58,8 @@ table dim_branch
 		lineageTag: ce40d46d-8cdb-4835-ba29-9cfab52d72db
 		summarizeBy: none
 		sourceColumn: opening_date
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -59,6 +71,8 @@ table dim_branch
 		summarizeBy: none
 		sourceColumn: manager_email
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column trading_hours_per_day
@@ -67,6 +81,8 @@ table dim_branch
 		lineageTag: f3923bbb-6220-4577-bb76-692c41c49917
 		summarizeBy: sum
 		sourceColumn: trading_hours_per_day
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

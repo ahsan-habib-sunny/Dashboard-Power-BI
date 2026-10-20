@@ -7,6 +7,8 @@ table dim_channel
 		summarizeBy: none
 		sourceColumn: channel_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column channel_name
@@ -14,6 +16,8 @@ table dim_channel
 		lineageTag: f294b399-ede6-455b-9b5e-1b75e8370103
 		summarizeBy: none
 		sourceColumn: channel_name
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -23,6 +27,8 @@ table dim_channel
 		summarizeBy: none
 		sourceColumn: channel_group
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column commission_rate
@@ -30,6 +36,8 @@ table dim_channel
 		lineageTag: 1328adc5-1eea-4358-ab70-4f7afdd3d078
 		summarizeBy: sum
 		sourceColumn: commission_rate
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

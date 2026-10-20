@@ -1,0 +1,70 @@
+table 'Time Intelligence'
+	lineageTag: 985e2df7-bf7d-48df-888e-858161617e9d
+
+	calculationGroup
+
+		calculationItem Current = SELECTEDMEASURE()
+
+		calculationItem LY = ```
+				
+				    VAR DatesWithData =
+				        CALCULATETABLE ( VALUES ( dim_date[date] ), dim_date[has_sales_data] = TRUE () )
+				    RETURN
+				        CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( DatesWithData ) )
+				```
+
+		calculationItem YoY =
+				
+				VAR DatesWithData =
+				    CALCULATETABLE ( VALUES ( dim_date[date] ), dim_date[has_sales_data] = TRUE () )
+				VAR Cur = SELECTEDMEASURE ()
+				VAR LY  = CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( DatesWithData ) )
+				RETURN
+				    Cur - LY
+
+		calculationItem 'YoY %' =
+				
+				VAR DatesWithData = CALCULATETABLE(VALUES(dim_date[date]), dim_date[has_sales_data] = TRUE())
+				VAR CY = SELECTEDMEASURE()
+				VAR LY = CALCULATE(SELECTEDMEASURE(), SAMEPERIODLASTYEAR(DatesWithData))
+				RETURN DIVIDE(CY - LY, LY)
+
+			formatStringDefinition = "0.0%;-0.0%;0.0%"
+
+		calculationItem YTD = CALCULATE(SELECTEDMEASURE(), DATESYTD(dim_date[date]))
+
+		calculationItem 'YTD LY' = ```
+				
+				    VAR YTDDate = CALCULATETABLE(VALUES(dim_date[date]), dim_date[has_sales_data] = TRUE())
+				    RETURN CALCULATE(SELECTEDMEASURE(), SAMEPERIODLASTYEAR(YTDDate))
+				```
+
+		calculationItem 'YTD YoY%' =
+				
+				VAR YTDDates =
+				    CALCULATETABLE ( DATESYTD ( dim_date[date] ), dim_date[has_sales_data] = TRUE () )
+				VAR CurYTD = CALCULATE ( SELECTEDMEASURE (), YTDDates )
+				VAR LYYTD  = CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( YTDDates ) )
+				RETURN
+				    DIVIDE ( CurYTD - LYYTD, LYYTD )
+
+			formatStringDefinition = "0.0%;-0.0%;0.0%"
+
+	column 'Time Calc'
+		dataType: string
+		lineageTag: 3dd00525-24c8-4800-ab9c-1f831b6c0c57
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b577895-4a71-4997-a53e-5e13ffd20541
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

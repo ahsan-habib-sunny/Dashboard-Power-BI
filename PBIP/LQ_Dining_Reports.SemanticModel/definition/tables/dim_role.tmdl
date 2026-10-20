@@ -7,6 +7,8 @@ table dim_role
 		summarizeBy: none
 		sourceColumn: role_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column role_name
@@ -15,6 +17,8 @@ table dim_role
 		summarizeBy: none
 		sourceColumn: role_name
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column department
@@ -22,6 +26,8 @@ table dim_role
 		lineageTag: 779dafcb-2cba-4782-b9e8-6ef7bae7c12c
 		summarizeBy: none
 		sourceColumn: department
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

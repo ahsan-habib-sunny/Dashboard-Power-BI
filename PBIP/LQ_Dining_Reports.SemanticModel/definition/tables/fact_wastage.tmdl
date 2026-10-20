@@ -7,6 +7,8 @@ table fact_wastage
 		summarizeBy: none
 		sourceColumn: waste_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column date
@@ -15,6 +17,8 @@ table fact_wastage
 		lineageTag: 09eb4466-5066-4845-bdd0-e7fee129e70e
 		summarizeBy: none
 		sourceColumn: date
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -26,6 +30,8 @@ table fact_wastage
 		summarizeBy: none
 		sourceColumn: branch_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column ingredient_id
@@ -33,6 +39,8 @@ table fact_wastage
 		lineageTag: e7ce9430-2187-4b3b-9d78-99c115cd9a7f
 		summarizeBy: none
 		sourceColumn: ingredient_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -42,6 +50,8 @@ table fact_wastage
 		summarizeBy: none
 		sourceColumn: waste_reason
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column quantity
@@ -49,6 +59,8 @@ table fact_wastage
 		lineageTag: ed582e26-59b9-4592-aeb1-d1bff6f0ff0a
 		summarizeBy: sum
 		sourceColumn: quantity
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -60,6 +72,8 @@ table fact_wastage
 		summarizeBy: sum
 		sourceColumn: unit_cost
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -69,6 +83,8 @@ table fact_wastage
 		lineageTag: f4042182-1291-41e5-bc0e-5a57ba69203e
 		summarizeBy: sum
 		sourceColumn: waste_cost
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

@@ -10,6 +10,8 @@ table dim_date
 		summarizeBy: none
 		sourceColumn: date
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -21,6 +23,8 @@ table dim_date
 		summarizeBy: none
 		sourceColumn: year
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = User
 
 	column quarter
@@ -28,6 +32,8 @@ table dim_date
 		lineageTag: d26a3696-d499-442a-a149-ecd28bade9f5
 		summarizeBy: none
 		sourceColumn: quarter
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -37,6 +43,8 @@ table dim_date
 		summarizeBy: none
 		sourceColumn: year_quarter
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column month_number
@@ -45,6 +53,8 @@ table dim_date
 		lineageTag: 1ba630e4-7529-4a3f-b047-2efb3d560be2
 		summarizeBy: none
 		sourceColumn: month_number
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = User
 
@@ -57,6 +67,8 @@ table dim_date
 
 		changedProperty = SortByColumn
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column month_short
@@ -68,6 +80,8 @@ table dim_date
 
 		changedProperty = SortByColumn
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column year_month
@@ -75,6 +89,8 @@ table dim_date
 		lineageTag: 41612e17-0607-4c13-81ce-acab49bb034e
 		summarizeBy: none
 		sourceColumn: year_month
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -84,6 +100,8 @@ table dim_date
 		lineageTag: 9a22e590-eb94-4517-b45a-dd9cf9326a73
 		summarizeBy: none
 		sourceColumn: month_start
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -96,6 +114,8 @@ table dim_date
 		summarizeBy: none
 		sourceColumn: week_start
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -106,6 +126,8 @@ table dim_date
 		lineageTag: 92a4b735-937f-4819-b52d-f8d2eaa419ff
 		summarizeBy: none
 		sourceColumn: day_of_week_number
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = User
 
@@ -118,6 +140,8 @@ table dim_date
 
 		changedProperty = SortByColumn
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column day_short
@@ -129,6 +153,8 @@ table dim_date
 
 		changedProperty = SortByColumn
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column is_weekend
@@ -137,6 +163,8 @@ table dim_date
 		lineageTag: c4ba4afc-024a-4f6c-b5da-fc27a4a58182
 		summarizeBy: none
 		sourceColumn: is_weekend
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -147,6 +175,8 @@ table dim_date
 		summarizeBy: none
 		sourceColumn: is_trading_day
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column has_sales_data
@@ -155,6 +185,8 @@ table dim_date
 		lineageTag: beeefb47-87de-4cd1-b17f-c9f3fd5c802f
 		summarizeBy: none
 		sourceColumn: has_sales_data
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

@@ -4,7 +4,6 @@ table _Measures
 	/// Total sales after discounts, excluding service charge
 	measure 'Net Sales' = SUM(fact_sales_lines[net_amount])
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Sales
 		lineageTag: 646ae3e1-7a32-47c7-9f2d-aa5aa4e84ffb
 
@@ -14,7 +13,6 @@ table _Measures
 
 	measure 'Gross Sales' = SUM(fact_sales_lines[gross_amount])
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Sales
 		lineageTag: eb4cf44e-9164-4070-ab1e-217aa2643a23
 
@@ -24,7 +22,6 @@ table _Measures
 
 	measure Discounts = SUM ( fact_sales_lines[discount_amount] )
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Sales
 		lineageTag: b773ae0e-9138-46a3-b6f9-6e229446de07
 
@@ -34,7 +31,6 @@ table _Measures
 
 	measure 'Discount %' = DIVIDE ( [Discounts], [Gross Sales] )
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Sales
 		lineageTag: d6b28552-8e44-4bac-9fa5-31da0a7ffb24
 
@@ -42,7 +38,6 @@ table _Measures
 
 	measure Orders = COUNTROWS ( fact_orders )
 		formatString: #,0
-		isHidden
 		displayFolder: Sales
 		lineageTag: 7589ae47-3ab5-4779-8f96-380d7ba547f3
 
@@ -50,7 +45,6 @@ table _Measures
 
 	measure Covers = SUM(fact_orders[covers])
 		formatString: #,0
-		isHidden
 		displayFolder: Sales
 		lineageTag: 09b27cbc-76a9-4241-807e-df65f00623ef
 
@@ -58,7 +52,6 @@ table _Measures
 
 	measure 'Items Sold' = SUM ( fact_sales_lines[quantity] )
 		formatString: #,0
-		isHidden
 		displayFolder: Sales
 		lineageTag: 186927a3-30c5-4474-8315-a96e9673cafe
 
@@ -66,7 +59,6 @@ table _Measures
 
 	measure 'Avg Order Value' = DIVIDE ( [Net Sales], [Orders] )
 		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
-		isHidden
 		displayFolder: Sales
 		lineageTag: c2d1bab4-b59a-48e9-be80-668413f29652
 
@@ -83,7 +75,6 @@ table _Measures
 			
 			```
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Sales
 		lineageTag: ceac7d9f-cbb3-4682-bd9c-97853ddaeec9
 
@@ -93,7 +84,6 @@ table _Measures
 
 	measure 'Spend per Head' = DIVIDE ( [Dine-in Sales], [Covers] )
 		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
-		isHidden
 		displayFolder: Sales
 		lineageTag: 8ac5c223-3cd6-47bf-93b7-bd4d777c3b45
 
@@ -108,7 +98,6 @@ table _Measures
 			    dim_channel[channel_group] = "Delivery"
 			)
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Sales
 		lineageTag: 6e053abb-de75-4980-8ca1-67bfb5b45033
 
@@ -118,7 +107,6 @@ table _Measures
 
 	measure 'Delivery Mix %' = DIVIDE ( [Delivery Sales], [Net Sales] )
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Sales
 		lineageTag: b8534c33-0bde-45b3-936b-e52530911b84
 
@@ -131,7 +119,6 @@ table _Measures
 			    fact_sales_lines[net_amount] * RELATED ( dim_channel[commission_rate] )
 			)
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Sales
 		lineageTag: 26aa4b0d-d3e5-4851-94c4-28940329b36d
 
@@ -141,7 +128,6 @@ table _Measures
 
 	measure 'Net Sales After Commission' = [Net Sales] - [Commission Cost]
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Sales
 		lineageTag: d9955949-f0e2-4fee-a1f3-da46ab561cc1
 
@@ -156,7 +142,6 @@ table _Measures
 			        RETURN CALCULATE([Net Sales], SAMEPERIODLASTYEAR(DatesWithData))
 			```
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Time Intelligence
 		lineageTag: 9aa1ff7e-9794-4cb8-b026-01530a52161f
 
@@ -176,7 +161,6 @@ table _Measures
 	/// Net sales compared with the same period last year, as a %
 	measure 'Net Sales YoY %' = DIVIDE([Net Sales YoY], [Net Sales LY])
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Time Intelligence
 		lineageTag: aa55f41d-87eb-4f33-affa-687cc9cb7d74
 
@@ -184,7 +168,6 @@ table _Measures
 
 	measure 'Net Sales YTD' = TOTALYTD([Net Sales], dim_date[date])
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Time Intelligence
 		lineageTag: 81c7adc3-262a-404d-b07e-9507f7f6fc87
 
@@ -194,7 +177,6 @@ table _Measures
 
 	measure 'Net Sales YTD LY' = TOTALYTD([Net Sales LY], dim_date[date])
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Time Intelligence
 		lineageTag: 34164763-f979-472f-bc70-31f3422c9a57
 
@@ -204,7 +186,6 @@ table _Measures
 
 	measure 'Net Sales YTD YoY %' = DIVIDE ( [Net Sales YTD] - [Net Sales YTD LY], [Net Sales YTD LY] )
 		formatString: 0%;-0%;0%
-		isHidden
 		displayFolder: Time Intelligence
 		lineageTag: 214145cc-be4a-4536-b308-06765cc0c47c
 
@@ -218,7 +199,6 @@ table _Measures
 			    RETURN CALCULATE([Net Sales LY], LFLBranches)
 			```
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Time Intelligence
 		lineageTag: 458814f3-1d1f-47ed-965a-06e8f985ef61
 
@@ -234,7 +214,6 @@ table _Measures
 			    RETURN CALCULATE([Net Sales], LFLBranches)
 			```
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Time Intelligence
 		lineageTag: 371f1945-fdab-4a32-a5fc-4350e8dcda91
 
@@ -244,7 +223,6 @@ table _Measures
 
 	measure 'LFL Sales YoY %' = DIVIDE ( [LFL Net Sales] - [LFL Net Sales LY], [LFL Net Sales LY] )
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Time Intelligence
 		lineageTag: 9aa2ad89-840e-4212-a984-ca855add7313
 
@@ -255,7 +233,6 @@ table _Measures
 			    DIVIDE([Net Sales], CALCULATE([Net Sales], ALL(dim_branch)))
 			```
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Sales
 		lineageTag: d7523515-c5ca-4ee9-ac65-b601adce2b9d
 
@@ -266,7 +243,6 @@ table _Measures
 			    DIVIDE([Net Sales], CALCULATE([Net Sales], ALLSELECTED(dim_branch)))
 			```
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Sales
 		lineageTag: 8e47d11d-a1ad-4929-b2d4-98d52806834e
 
@@ -278,7 +254,6 @@ table _Measures
 			        RANKX(ALL(dim_branch[branch_name]), [Net Sales], , DESC, Dense))
 			```
 		formatString: 0
-		isHidden
 		displayFolder: Sales
 		lineageTag: f3e1c0e3-2476-4681-8ff0-9d623355f4d3
 
@@ -290,7 +265,6 @@ table _Measures
 			        RANKX(ALLSELECTED(dim_menu_item[menu_item_name]), [Items Sold], , DESC, Dense))
 			```
 		formatString: 0
-		isHidden
 		displayFolder: Sales
 		lineageTag: 6c8b2a10-2be0-4592-b541-6363f8cf3bed
 
@@ -298,7 +272,6 @@ table _Measures
 
 	measure 'Actual Food Cost' = SUM(fact_purchases[line_cost])
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Kitchen
 		lineageTag: 4e2ec711-8a8d-48d1-8e29-49dd0608d5e2
 
@@ -308,7 +281,6 @@ table _Measures
 
 	measure 'Food Cost %' = DIVIDE([Actual Food Cost], [Net Sales])
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Kitchen
 		lineageTag: b02a9da8-7bb9-4c3a-9859-493629ed9901
 
@@ -321,7 +293,6 @@ table _Measures
 			    fact_sales_lines[quantity] * RELATED ( dim_menu_item[Recipe Cost] )
 			)
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Kitchen
 		lineageTag: 9f4c404f-1eee-459d-ac78-8699434bcda6
 
@@ -331,7 +302,6 @@ table _Measures
 
 	measure 'Theoretical Food Cost %' = DIVIDE ([Theoretical Food Cost], [Net Sales])
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Kitchen
 		lineageTag: e4364583-51b3-49e0-9e03-e13ea137fc4f
 
@@ -339,7 +309,6 @@ table _Measures
 
 	measure 'Food Cost Variance' = [Actual Food Cost] - [Theoretical Food Cost]
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Kitchen
 		lineageTag: 37429ff8-3f01-471c-b5c4-c2a1d622d1ba
 
@@ -349,7 +318,6 @@ table _Measures
 
 	measure 'Food Cost Variance %' = DIVIDE ([Food Cost Variance], [Net Sales])
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Kitchen
 		lineageTag: 06099c6a-ef32-4c3b-ad10-12718a47d149
 
@@ -357,7 +325,6 @@ table _Measures
 
 	measure 'Waste Cost' = SUM(fact_wastage[waste_cost])
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Kitchen
 		lineageTag: d3de7190-2149-457f-b822-cb62609e95e8
 
@@ -367,7 +334,6 @@ table _Measures
 
 	measure 'Waste % of Sales' = DIVIDE([Waste Cost], [Net Sales])
 		formatString: 0.00%;-0.00%;0.00%
-		isHidden
 		displayFolder: Kitchen
 		lineageTag: 9a7cd251-8cd0-47e9-9a36-94ac71263a1e
 
@@ -375,7 +341,6 @@ table _Measures
 
 	measure 'Gross Profit' = [Net Sales] - [Actual Food Cost]
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Kitchen
 		lineageTag: 1cffa3f7-f5cf-4e28-b210-c91a8d505934
 
@@ -385,7 +350,6 @@ table _Measures
 
 	measure 'Gross Profit %' = DIVIDE([Gross Profit], [Net Sales])
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Kitchen
 		lineageTag: 94607632-f497-4833-9df7-c9bf9aed661e
 
@@ -393,7 +357,6 @@ table _Measures
 
 	measure 'Labour Cost' = SUM(fact_labour_shifts[labour_cost])
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Labour
 		lineageTag: 50c0d2e0-3d37-4a4d-8514-ad395df1a2bc
 
@@ -403,7 +366,6 @@ table _Measures
 
 	measure 'Labour Cost %' = DIVIDE([Labour Cost], [Net Sales])
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Labour
 		lineageTag: 65baa405-8356-4a9d-a91a-3924eaa6c0bd
 
@@ -411,7 +373,6 @@ table _Measures
 
 	measure 'Sales per Labour Hour' = DIVIDE([Net Sales],[Labour Hours])
 		formatString: "£"#,0.0;-"£"#,0.0;"£"#,0.0
-		isHidden
 		displayFolder: Labour
 		lineageTag: ae2548a7-519d-40a8-9cbd-99d7816b9c0a
 
@@ -420,7 +381,6 @@ table _Measures
 		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
 
 	measure 'Labour Hours' = SUM(fact_labour_shifts[actual_hours])
-		isHidden
 		displayFolder: Labour
 		lineageTag: e6c47724-1f22-493f-9f64-d81316c5fe2a
 
@@ -430,7 +390,6 @@ table _Measures
 
 	measure 'Avg Hourly Rate' = DIVIDE([Labour Cost], [Labour Hours])
 		formatString: "£"#,0.0;-"£"#,0.0;"£"#,0.0
-		isHidden
 		displayFolder: Labour
 		lineageTag: ec43b53e-e895-4818-a0e7-8e829fc964ce
 
@@ -440,7 +399,6 @@ table _Measures
 
 	measure 'Prime Cost' = [Actual Food Cost] + [Labour Cost]
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Labour
 		lineageTag: 4c3a7bb3-bbe3-4298-af2c-8d27aa473b64
 
@@ -450,7 +408,6 @@ table _Measures
 
 	measure 'Prime Cost %' = DIVIDE([Prime Cost], [Net Sales])
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Labour
 		lineageTag: f914ea74-d9c8-4363-b726-64861a0f4ccf
 
@@ -461,7 +418,6 @@ table _Measures
 			        COUNTROWS(fact_bookings)
 			```
 		formatString: 0
-		isHidden
 		displayFolder: Marketing\Bookings
 		lineageTag: fc951fb2-ba9d-4727-918f-966ea464c936
 
@@ -472,7 +428,6 @@ table _Measures
 			        CALCULATE([Bookings], fact_bookings[booking_status] = "Completed")
 			```
 		formatString: 0
-		isHidden
 		displayFolder: Marketing\Bookings
 		lineageTag: a2c39649-b8be-408c-86ad-3a59cd51d808
 
@@ -483,7 +438,6 @@ table _Measures
 			        CALCULATE([Bookings], fact_bookings[booking_status] = "No-show")
 			```
 		formatString: 0
-		isHidden
 		displayFolder: Marketing\Bookings
 		lineageTag: 342365fa-25f1-4aed-a47b-75cf3598d86d
 
@@ -494,7 +448,6 @@ table _Measures
 			        CALCULATE([Bookings], fact_bookings[booking_status] = "Cancelled")
 			```
 		formatString: 0
-		isHidden
 		displayFolder: Marketing\Bookings
 		lineageTag: 8c2e3a0b-5338-4d5f-b93f-19934a2edae8
 
@@ -502,7 +455,6 @@ table _Measures
 
 	measure 'No-show Rate' = DIVIDE([No-shows], [Completed Bookings] + [No-shows])
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Marketing\Bookings
 		lineageTag: a184b528-e5f8-4569-ac33-e3c9ca5df9e9
 
@@ -510,7 +462,6 @@ table _Measures
 
 	measure 'Cancellation Rate' = DIVIDE([Cancellations], [Bookings])
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Marketing\Bookings
 		lineageTag: 78b521e1-4f91-47e2-8b88-b5489a80c5e5
 
@@ -521,7 +472,6 @@ table _Measures
 			    CALCULATE([Bookings], USERELATIONSHIP(fact_bookings[booking_created_date], dim_date[date]))
 			```
 		formatString: 0
-		isHidden
 		displayFolder: Marketing\Bookings
 		lineageTag: ddc05869-688e-420f-bfbe-efcdbec70f89
 
@@ -532,7 +482,6 @@ table _Measures
 			    AVERAGEX(fact_bookings, DATEDIFF(fact_bookings[booking_created_date], fact_bookings[visit_date], DAY))
 			```
 		formatString: 0
-		isHidden
 		displayFolder: Marketing\Bookings
 		lineageTag: 3047d9dd-8ddb-4aea-b2a7-90bd5e7a3c9c
 
@@ -545,7 +494,6 @@ table _Measures
 			    CALCULATE(SUM(fact_bookings[party_size]), fact_bookings[booking_status] = "Completed")
 			```
 		formatString: 0
-		isHidden
 		displayFolder: Marketing\Bookings
 		lineageTag: 1780d697-eb8c-4e22-9eae-20be86e6e517
 
@@ -553,7 +501,6 @@ table _Measures
 
 	measure 'Booked Covers %' = DIVIDE([Booked Covers], [Covers])
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Marketing\Bookings
 		lineageTag: ddade4a6-e08f-4e45-b6f4-c8481c3b88d9
 
@@ -561,14 +508,12 @@ table _Measures
 
 	measure 'Review Count' = COUNTROWS(fact_reviews)
 		formatString: 0
-		isHidden
 		displayFolder: Marketing\Reviews
 		lineageTag: e07d34f3-3971-4743-8f63-1c89c3dc5973
 
 		changedProperty = IsHidden
 
 	measure 'Avg Rating' = AVERAGE(fact_reviews[rating])
-		isHidden
 		displayFolder: Marketing\Reviews
 		lineageTag: b1ee2575-48ee-4901-b7bf-d5e3a9bf87e9
 
@@ -578,7 +523,6 @@ table _Measures
 
 	measure 'Negative Review %' = DIVIDE(CALCULATE([Review Count], fact_reviews[rating] <= 2), [Review Count])
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Marketing\Reviews
 		lineageTag: 850712fe-bb5b-4da3-8b03-0a59cce4397a
 
@@ -586,7 +530,6 @@ table _Measures
 
 	measure 'Campaign Spend' = SUM(fact_marketing_spend[spend])
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Marketing\Campaigns
 		lineageTag: f76cfd84-4fae-4fb1-a675-1ad4edd58cde
 
@@ -601,7 +544,6 @@ table _Measures
 			    KEEPFILTERS(dim_campaign[campaign_id] <> "CMP000")
 			)
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Marketing\Campaigns
 		lineageTag: b7e08bea-78d3-4856-be26-cd2d7195ea3e
 
@@ -617,7 +559,6 @@ table _Measures
 			        )
 			```
 		formatString: 0
-		isHidden
 		displayFolder: Marketing\Campaigns
 		lineageTag: c1a7ae76-f4c7-4c17-95cd-0f60d4f8c7d7
 
@@ -628,7 +569,6 @@ table _Measures
 			        DIVIDE ( [Campaign Sales], [Campaign Spend] )
 			```
 		formatString: 0.00
-		isHidden
 		displayFolder: Marketing\Campaigns
 		lineageTag: e2c750a9-aac9-4d37-b820-1b1952d26e34
 
@@ -636,7 +576,6 @@ table _Measures
 
 	measure 'Campaign Food Cost' = CALCULATE([Theoretical Food Cost], KEEPFILTERS(dim_campaign[campaign_id] <> "CMP000"))
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Marketing\Campaigns
 		lineageTag: f74a820d-4f68-48ad-8c2f-adfa714ef4e7
 
@@ -652,7 +591,6 @@ table _Measures
 			        )
 			```
 		formatString: 0%;-0%;0%
-		isHidden
 		displayFolder: Marketing\Campaigns
 		lineageTag: ce26727d-ecc8-4c9c-bedd-bbc6d9240dc7
 
@@ -665,7 +603,6 @@ table _Measures
 			    KEEPFILTERS ( dim_customer[customer_id] <> "C00000" )
 			)
 		formatString: 0
-		isHidden
 		displayFolder: Marketing\Customers
 		lineageTag: d3d3560d-0978-4441-a2e7-0c5b0eaf50ba
 
@@ -680,7 +617,6 @@ table _Measures
 			        COUNTROWS(FILTER(CustomersInPeriod, dim_customer[First Order Date] >= PeriodStart))
 			```
 		formatString: 0
-		isHidden
 		displayFolder: Marketing\Customers
 		lineageTag: a2b40f7e-8b81-4eab-949d-9da729701b47
 
@@ -688,7 +624,6 @@ table _Measures
 
 	measure 'Returning Customers' = [Active Customers] - [New Customers]
 		formatString: 0
-		isHidden
 		displayFolder: Marketing\Customers
 		lineageTag: 1fb68b36-efdc-4d4f-97a0-78ddb03ad1d1
 
@@ -696,7 +631,6 @@ table _Measures
 
 	measure 'Returning Customer %' = DIVIDE ( [Returning Customers], [Active Customers] )
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Marketing\Customers
 		lineageTag: cbdc1720-8960-47cc-8aa3-272328aa5c76
 
@@ -709,7 +643,6 @@ table _Measures
 			    KEEPFILTERS(dim_date[has_sales_data] = TRUE ())
 			)
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Budget
 		lineageTag: 2ef6239e-eb80-4f79-95f4-8c29e9a112d7
 
@@ -719,7 +652,6 @@ table _Measures
 
 	measure 'Budget Variance' = [Net Sales] - [Budget Net Sales]
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Budget
 		lineageTag: f61102a1-3dcb-4d03-9347-5c59d396e6e6
 
@@ -729,7 +661,6 @@ table _Measures
 
 	measure 'Budget Variance %' = DIVIDE ( [Budget Variance], [Budget Net Sales] )
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Budget
 		lineageTag: a013da17-57f3-407c-a07d-9441fc4c8c10
 
@@ -742,7 +673,6 @@ table _Measures
 			    KEEPFILTERS ( dim_date[has_sales_data] = TRUE () )
 			)
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Budget
 		lineageTag: b4826b21-1f21-4e90-b53e-a75d1d951d04
 
@@ -752,7 +682,6 @@ table _Measures
 
 	measure 'Labour vs Budget' = [Labour Cost] - [Budget Labour Cost]
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Budget
 		lineageTag: 64a1f1ec-cd4c-483e-82fc-9fae9c51ba99
 
@@ -778,7 +707,6 @@ table _Measures
 			        dim_branch[seats] * dim_branch[trading_hours_per_day] * TradingDays
 			)
 		formatString: #,0
-		isHidden
 		displayFolder: Sales
 		lineageTag: 0aab38f4-e89d-4ebf-a32e-16f72b485628
 
@@ -786,7 +714,6 @@ table _Measures
 
 	measure RevPASH = DIVIDE ( [Dine-in Sales], [Available Seat Hours] )
 		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
-		isHidden
 		displayFolder: Sales
 		lineageTag: e0fa0049-cd85-49dd-a915-2c851970ca77
 
@@ -796,7 +723,6 @@ table _Measures
 
 	measure 'Menu Gross Margin' = [Net Sales] - [Theoretical Food Cost]
 		formatString: "£"#,0;-"£"#,0;"£"#,0
-		isHidden
 		displayFolder: Menu Engineering
 		lineageTag: f6a0a9ea-f502-49cf-a957-f3cfd7183287
 
@@ -806,7 +732,6 @@ table _Measures
 
 	measure 'Profit per Plate' = DIVIDE ( [Menu Gross Margin], [Items Sold] )
 		formatString: "£"#,0.0;-"£"#,0.0;"£"#,0.0
-		isHidden
 		displayFolder: Menu Engineering
 		lineageTag: 24660bfc-eae0-4a3e-995e-b7049154d5e8
 
@@ -820,7 +745,6 @@ table _Measures
 			    RETURN DIVIDE([Items Sold], TotalItemsSold)
 			```
 		formatString: #,0.0%;-#,0.0%;#,0.0%
-		isHidden
 		displayFolder: Menu Engineering
 		lineageTag: 9f106a25-305b-46cd-bbe9-28adfc98023e
 
@@ -828,7 +752,6 @@ table _Measures
 
 	measure 'Popularity Threshold' = 0.7 / CALCULATE(DISTINCTCOUNT(fact_sales_lines[menu_item_id]), ALLSELECTED(dim_menu_item ))
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Menu Engineering
 		lineageTag: 1b63203c-224d-4dd5-9f41-48c242de5373
 
@@ -836,7 +759,6 @@ table _Measures
 
 	measure 'Avg Profit per Plate' = CALCULATE([Profit per Plate], ALLSELECTED(dim_menu_item))
 		formatString: 0.0
-		isHidden
 		displayFolder: Menu Engineering
 		lineageTag: 35275e09-4c5d-40c2-8a9b-dae05c3b9002
 
@@ -854,7 +776,6 @@ table _Measures
 			        "Dog"
 			    )
 			)
-		isHidden
 		displayFolder: Menu Engineering
 		lineageTag: 12d92aaf-393a-44d4-a1f4-a999366c01e1
 
@@ -869,7 +790,6 @@ table _Measures
 			    "Puzzle", "#6C8FA6",
 			    "Dog", "#B23A2E"
 			)
-		isHidden
 		displayFolder: Menu Engineering
 		lineageTag: 21eaf52c-f527-48b0-85b8-2330a723a884
 
@@ -881,7 +801,6 @@ table _Measures
 			    VAR Subtitle = "Performance Year - " & SELECTEDVALUE ( dim_date[year], "All years" )
 			    RETURN Title & UNICHAR(10) & Subtitle
 			```
-		isHidden
 		displayFolder: Branch Group Benchmarks
 		lineageTag: 37c72bc1-b55f-4e3d-9a71-5496175675bb
 
@@ -889,7 +808,6 @@ table _Measures
 
 	measure 'Group Prime Cost %' = CALCULATE ( [Prime Cost %], REMOVEFILTERS ( dim_branch ))
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Branch Group Benchmarks
 		lineageTag: 50dd36d3-40ae-4182-ab85-a88bd8004173
 
@@ -897,7 +815,6 @@ table _Measures
 
 	measure 'Group Labour Cost %' = CALCULATE ( [Labour Cost %], REMOVEFILTERS ( dim_branch ) )
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Branch Group Benchmarks
 		lineageTag: 2f26b15e-5d34-4d37-97f1-f314d1d31610
 
@@ -905,7 +822,6 @@ table _Measures
 
 	measure 'Group Food Cost Variance %' = CALCULATE ( [Food Cost Variance %], REMOVEFILTERS ( dim_branch ) )
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Branch Group Benchmarks
 		lineageTag: 73913576-0f84-4117-9ff2-bb35a6e34651
 
@@ -913,7 +829,6 @@ table _Measures
 
 	measure 'Group Waste %' = CALCULATE ( [Waste % of Sales], REMOVEFILTERS ( dim_branch ) )
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Branch Group Benchmarks
 		lineageTag: f22d21a3-da10-41d2-ab27-7f1697853f45
 
@@ -921,7 +836,6 @@ table _Measures
 
 	measure 'Group Avg Rating' = CALCULATE ( [Avg Rating], REMOVEFILTERS ( dim_branch ) )
 		formatString: 0.0
-		isHidden
 		displayFolder: Branch Group Benchmarks
 		lineageTag: 976480bc-00d4-4caa-860b-219350e60d41
 
@@ -929,7 +843,6 @@ table _Measures
 
 	measure 'Group No-show Rate' = CALCULATE ( [No-show Rate], REMOVEFILTERS ( dim_branch ) )
 		formatString: 0.0%;-0.0%;0.0%
-		isHidden
 		displayFolder: Branch Group Benchmarks
 		lineageTag: 968c4c6f-1120-4315-b2f2-75ded84667c3
 
@@ -937,6 +850,8 @@ table _Measures
 
 	measure upn = USERPRINCIPALNAME()
 		lineageTag: 8b4a6ba0-af2b-46b3-b751-69f8b09ccf00
+
+		changedProperty = IsHidden
 
 	partition _Measures = m
 		mode: import

@@ -7,6 +7,8 @@ table fact_sales_lines
 		summarizeBy: none
 		sourceColumn: sales_line_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column order_id
@@ -14,6 +16,8 @@ table fact_sales_lines
 		lineageTag: 1e9b1e2d-3bd3-4cbf-91af-303d7f31001d
 		summarizeBy: none
 		sourceColumn: order_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -23,6 +27,8 @@ table fact_sales_lines
 		lineageTag: 226cf3fc-ad15-46a9-af27-450c56994e1e
 		summarizeBy: none
 		sourceColumn: date
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -35,6 +41,8 @@ table fact_sales_lines
 		summarizeBy: none
 		sourceColumn: hour
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column branch_id
@@ -42,6 +50,8 @@ table fact_sales_lines
 		lineageTag: f47e6071-ee4a-4c14-88ef-d5554a3340e3
 		summarizeBy: none
 		sourceColumn: branch_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -51,6 +61,8 @@ table fact_sales_lines
 		summarizeBy: none
 		sourceColumn: channel_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column menu_item_id
@@ -58,6 +70,8 @@ table fact_sales_lines
 		lineageTag: ba4663bf-5f83-4b5b-b7b9-169c12130929
 		summarizeBy: none
 		sourceColumn: menu_item_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -67,6 +81,8 @@ table fact_sales_lines
 		summarizeBy: none
 		sourceColumn: customer_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column campaign_id
@@ -74,6 +90,8 @@ table fact_sales_lines
 		lineageTag: c8714e3a-7ee1-4a17-8a28-b610029016e1
 		summarizeBy: none
 		sourceColumn: campaign_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -84,6 +102,8 @@ table fact_sales_lines
 		summarizeBy: sum
 		sourceColumn: quantity
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column unit_price
@@ -91,6 +111,8 @@ table fact_sales_lines
 		lineageTag: 5a0c3c6e-d12e-4403-92dc-526c60c884fa
 		summarizeBy: sum
 		sourceColumn: unit_price
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -101,6 +123,8 @@ table fact_sales_lines
 		lineageTag: 8bd42a3b-74bd-4ff5-90d5-2d337ffa504a
 		summarizeBy: sum
 		sourceColumn: gross_amount
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -113,6 +137,8 @@ table fact_sales_lines
 		summarizeBy: sum
 		sourceColumn: discount_amount
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column net_amount
@@ -120,6 +146,8 @@ table fact_sales_lines
 		lineageTag: ced224d8-c1d2-4c6f-b3ba-17240ee472e5
 		summarizeBy: sum
 		sourceColumn: net_amount
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

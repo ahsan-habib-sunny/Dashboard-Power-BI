@@ -7,6 +7,8 @@ table fact_budget
 		summarizeBy: none
 		sourceColumn: budget_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column branch_id
@@ -14,6 +16,8 @@ table fact_budget
 		lineageTag: f0f22cb8-8eda-411c-9c94-88a5b2dd3d43
 		summarizeBy: none
 		sourceColumn: branch_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -23,6 +27,8 @@ table fact_budget
 		lineageTag: b5b31260-aef8-4010-90c5-c5c7488c2efd
 		summarizeBy: none
 		sourceColumn: month_start
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -35,6 +41,8 @@ table fact_budget
 		summarizeBy: sum
 		sourceColumn: budget_net_sales
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column budget_food_cost
@@ -44,6 +52,8 @@ table fact_budget
 		summarizeBy: sum
 		sourceColumn: budget_food_cost
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column budget_labour_cost
@@ -51,6 +61,8 @@ table fact_budget
 		lineageTag: a55c7248-a959-4298-9143-c6fae49aef15
 		summarizeBy: sum
 		sourceColumn: budget_labour_cost
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

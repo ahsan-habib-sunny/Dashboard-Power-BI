@@ -7,6 +7,8 @@ table dim_campaign
 		summarizeBy: none
 		sourceColumn: campaign_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column campaign_name
@@ -14,6 +16,8 @@ table dim_campaign
 		lineageTag: a3424eac-847a-4c2a-96dc-e96bb5bd0d56
 		summarizeBy: none
 		sourceColumn: campaign_name
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -23,6 +27,8 @@ table dim_campaign
 		lineageTag: 8594c213-fc69-449b-b312-faec6a20afef
 		summarizeBy: none
 		sourceColumn: start_date
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -37,6 +43,8 @@ table dim_campaign
 		summarizeBy: none
 		sourceColumn: end_date
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -47,6 +55,8 @@ table dim_campaign
 		summarizeBy: none
 		sourceColumn: marketing_channel
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column discount_pct
@@ -54,6 +64,8 @@ table dim_campaign
 		lineageTag: a188395a-9e6a-4a66-a6e9-c47f5a9838a4
 		summarizeBy: sum
 		sourceColumn: discount_pct
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -65,6 +77,8 @@ table dim_campaign
 		summarizeBy: none
 		sourceColumn: discount_applies_to
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column order_channel
@@ -72,6 +86,8 @@ table dim_campaign
 		lineageTag: 07e83d2e-8954-4d12-8fdc-c27c034e2e5d
 		summarizeBy: none
 		sourceColumn: order_channel
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -81,6 +97,8 @@ table dim_campaign
 		summarizeBy: none
 		sourceColumn: branch_scope
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column planned_budget
@@ -89,6 +107,8 @@ table dim_campaign
 		lineageTag: 87972239-7628-4dc8-bc3d-b8a8e11cdf17
 		summarizeBy: sum
 		sourceColumn: planned_budget
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

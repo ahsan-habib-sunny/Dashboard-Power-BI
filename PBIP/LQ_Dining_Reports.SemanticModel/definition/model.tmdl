@@ -1,6 +1,7 @@
 model Model
 	culture: en-US
 	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
 	sourceQueryCulture: en-US
 	valueFilterBehavior: independent
 	dataAccessOptions
@@ -11,7 +12,7 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_QueryOrder = ["bridge_recipe","dim_branch","dim_campaign","dim_channel","dim_customer","dim_date","dim_ingredient","dim_menu_item","dim_role","dim_supplier","dim_time","fact_bookings","fact_budget","fact_labour_shifts","fact_marketing_spend","fact_orders","fact_purchases","fact_reviews","fact_sales_lines","fact_wastage","_Measures","DataFolder","RangeStart","RangeEnd"]
 
-annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode","TMDLView_Desktop"]
+annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode","TMDLView_Desktop","CalcGroup"]
 
 ref table bridge_recipe
 ref table dim_branch
@@ -34,6 +35,7 @@ ref table fact_reviews
 ref table fact_sales_lines
 ref table fact_wastage
 ref table _Measures
+ref table 'Time Intelligence'
 
 ref role 'NQ Branch Manager'
 ref role 'Head Office'

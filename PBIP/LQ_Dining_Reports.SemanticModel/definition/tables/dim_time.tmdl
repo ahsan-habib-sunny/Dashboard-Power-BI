@@ -8,6 +8,8 @@ table dim_time
 		summarizeBy: none
 		sourceColumn: hour
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column time_label
@@ -16,6 +18,8 @@ table dim_time
 		lineageTag: 9f54a75b-4e2f-499b-8bec-7f30b2bde4e6
 		summarizeBy: none
 		sourceColumn: time_label
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -26,6 +30,8 @@ table dim_time
 		lineageTag: 2d9ece05-5a6b-4609-8c69-e679dc076a5a
 		summarizeBy: none
 		sourceColumn: daypart
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

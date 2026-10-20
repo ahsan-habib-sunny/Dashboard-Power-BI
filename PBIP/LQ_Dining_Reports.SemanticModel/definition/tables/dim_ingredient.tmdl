@@ -7,6 +7,8 @@ table dim_ingredient
 		summarizeBy: none
 		sourceColumn: ingredient_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column ingredient_name
@@ -14,6 +16,8 @@ table dim_ingredient
 		lineageTag: 57b6b77d-ba7b-41cb-88b2-7d6ee143e7a6
 		summarizeBy: none
 		sourceColumn: ingredient_name
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -23,6 +27,8 @@ table dim_ingredient
 		summarizeBy: none
 		sourceColumn: ingredient_category
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column unit
@@ -31,6 +37,8 @@ table dim_ingredient
 		summarizeBy: none
 		sourceColumn: unit
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column standard_cost_per_unit
@@ -38,6 +46,8 @@ table dim_ingredient
 		lineageTag: 0c653996-aea8-4e74-9158-9435acaf045e
 		summarizeBy: sum
 		sourceColumn: standard_cost_per_unit
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -48,6 +58,8 @@ table dim_ingredient
 		lineageTag: f8c83a54-b550-4a17-b65d-39b5ae9a87bb
 		summarizeBy: none
 		sourceColumn: supplier_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

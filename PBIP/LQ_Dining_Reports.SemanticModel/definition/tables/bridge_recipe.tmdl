@@ -7,6 +7,8 @@ table bridge_recipe
 		summarizeBy: none
 		sourceColumn: recipe_line_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column menu_item_id
@@ -14,6 +16,8 @@ table bridge_recipe
 		lineageTag: f600ec48-287f-4ff6-8209-55e2e0bd7489
 		summarizeBy: none
 		sourceColumn: menu_item_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -23,6 +27,8 @@ table bridge_recipe
 		summarizeBy: none
 		sourceColumn: ingredient_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column quantity_per_portion
@@ -30,6 +36,8 @@ table bridge_recipe
 		lineageTag: b606716b-7f9e-4088-ac7c-a09dc9144b35
 		summarizeBy: sum
 		sourceColumn: quantity_per_portion
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

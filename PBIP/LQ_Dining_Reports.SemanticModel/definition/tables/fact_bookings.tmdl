@@ -7,6 +7,8 @@ table fact_bookings
 		summarizeBy: none
 		sourceColumn: booking_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column booking_created_date
@@ -15,6 +17,8 @@ table fact_bookings
 		lineageTag: 019ef689-aec9-45fd-b4c2-a2fc1683ac50
 		summarizeBy: none
 		sourceColumn: booking_created_date
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -27,6 +31,8 @@ table fact_bookings
 		summarizeBy: none
 		sourceColumn: visit_date
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -38,6 +44,8 @@ table fact_bookings
 		summarizeBy: sum
 		sourceColumn: visit_hour
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column branch_id
@@ -45,6 +53,8 @@ table fact_bookings
 		lineageTag: 9fe74094-ce32-4d4d-940b-8e5355019edc
 		summarizeBy: none
 		sourceColumn: branch_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -54,6 +64,8 @@ table fact_bookings
 		summarizeBy: none
 		sourceColumn: customer_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column booking_source
@@ -61,6 +73,8 @@ table fact_bookings
 		lineageTag: 6d364280-4f41-4827-97df-fd664d3ae8e2
 		summarizeBy: none
 		sourceColumn: booking_source
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -71,6 +85,8 @@ table fact_bookings
 		summarizeBy: sum
 		sourceColumn: party_size
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 	column booking_status
@@ -78,6 +94,8 @@ table fact_bookings
 		lineageTag: 71996c3b-ceb3-4e98-bfae-53852366a3e3
 		summarizeBy: none
 		sourceColumn: booking_status
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
