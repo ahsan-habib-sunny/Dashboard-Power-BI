@@ -191,13 +191,7 @@ table _Measures
 
 		changedProperty = IsHidden
 
-	measure 'LFL Net Sales LY' = ```
-			
-			    VAR DatesWithData = CALCULATETABLE(VALUES(dim_date[date]), dim_date[has_sales_data] = TRUE())
-			    VAR FirstDateLY = MINX(SAMEPERIODLASTYEAR(DatesWithData), dim_date[date])
-			    VAR LFLBranches = FILTER(dim_branch, dim_branch[opening_date] <= FirstDateLY)
-			    RETURN CALCULATE([Net Sales LY], LFLBranches)
-			```
+	measure 'LFL Net Sales LY' = CALCULATE([Net Sales LY], 'Time Intelligence'[Time Calc] = "LFL LY")
 		formatString: "£"#,0;-"£"#,0;"£"#,0
 		displayFolder: Time Intelligence
 		lineageTag: 458814f3-1d1f-47ed-965a-06e8f985ef61
@@ -206,13 +200,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
 
-	measure 'LFL Net Sales' = ```
-			
-			    VAR DatesWithData = CALCULATETABLE(VALUES(dim_date[date]), dim_date[has_sales_data] = TRUE ())
-			    VAR FirstDateLY = MINX(SAMEPERIODLASTYEAR(DatesWithData ), dim_date[date])
-			    VAR LFLBranches = FILTER(dim_branch, dim_branch[opening_date] <= FirstDateLY)
-			    RETURN CALCULATE([Net Sales], LFLBranches)
-			```
+	measure 'LFL Net Sales' = CALCULATE([Net Sales], 'Time Intelligence'[Time Calc] = "LFL")
 		formatString: "£"#,0;-"£"#,0;"£"#,0
 		displayFolder: Time Intelligence
 		lineageTag: 371f1945-fdab-4a32-a5fc-4350e8dcda91
@@ -221,7 +209,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
 
-	measure 'LFL Sales YoY %' = DIVIDE ( [LFL Net Sales] - [LFL Net Sales LY], [LFL Net Sales LY] )
+	measure 'LFL Sales YoY %' = CALCULATE([Net Sales], 'Time Intelligence'[Time Calc] = "LFL YoY %")
 		formatString: 0.0%;-0.0%;0.0%
 		displayFolder: Time Intelligence
 		lineageTag: 9aa2ad89-840e-4212-a984-ca855add7313

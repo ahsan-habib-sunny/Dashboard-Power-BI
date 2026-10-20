@@ -50,6 +50,38 @@ table 'Time Intelligence'
 
 			formatStringDefinition = "0.0%;-0.0%;0.0%"
 
+		calculationItem LFL = ```
+				
+				    VAR DatesWithData = CALCULATETABLE ( VALUES ( dim_date[date] ), dim_date[has_sales_data] = TRUE () )
+				    VAR FirstDateLY = MINX ( SAMEPERIODLASTYEAR ( DatesWithData ), dim_date[date] )
+				    VAR LFLBranches = FILTER ( dim_branch, dim_branch[opening_date] <= FirstDateLY )
+				    RETURN
+				        CALCULATE ( SELECTEDMEASURE (), LFLBranches )
+				```
+
+		calculationItem 'LFL LY' = ```
+				
+				    VAR DatesWithData =
+				        CALCULATETABLE ( VALUES ( dim_date[date] ), dim_date[has_sales_data] = TRUE () )
+				    VAR FirstDateLY = MINX ( SAMEPERIODLASTYEAR ( DatesWithData ), dim_date[date] )
+				    VAR LFLBranches = FILTER ( dim_branch, dim_branch[opening_date] <= FirstDateLY )
+				    RETURN
+				        CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( DatesWithData ), LFLBranches )
+				```
+
+		calculationItem 'LFL YoY %' = ```
+				
+				    VAR DatesWithData = CALCULATETABLE ( VALUES ( dim_date[date] ), dim_date[has_sales_data] = TRUE () )
+				    VAR FirstDateLY = MINX ( SAMEPERIODLASTYEAR ( DatesWithData ), dim_date[date] )
+				    VAR LFLBranches = FILTER ( dim_branch, dim_branch[opening_date] <= FirstDateLY )
+				    VAR Cur = CALCULATE ( SELECTEDMEASURE (), LFLBranches )
+				    VAR LY  = CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( DatesWithData ), LFLBranches )
+				    RETURN
+				        DIVIDE ( Cur - LY, LY )
+				```
+
+			formatStringDefinition = "0.0%;-0.0%;0.0%"
+
 	column 'Time Calc'
 		dataType: string
 		lineageTag: 3dd00525-24c8-4800-ab9c-1f831b6c0c57
