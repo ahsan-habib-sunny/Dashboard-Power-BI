@@ -1,6 +1,7 @@
 table _Measures
 	lineageTag: 3d3995f1-153d-4afe-9d33-d3adff0bf4c3
 
+	/// Total sales after discounts, excluding service charge
 	measure 'Net Sales' = SUM(fact_sales_lines[net_amount])
 		formatString: "£"#,0;-"£"#,0;"£"#,0
 		isHidden
