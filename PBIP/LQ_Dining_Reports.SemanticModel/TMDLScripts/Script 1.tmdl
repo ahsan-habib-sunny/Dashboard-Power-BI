@@ -1,12 +1,14 @@
 createOrReplace
 
 	ref table _Measures
-		/// Net sales compared with the same period last year, as a %
-		measure 'Net Sales YoY %' = DIVIDE([Net Sales YoY], [Net Sales LY])
-			formatString: 0.0%;-0.0%;0.0%
+		/// Total sales after discounts, excluding service charge
+		measure 'Net Sales' = SUM(fact_sales_lines[net_amount])
+			formatString: "£"#,0;-"£"#,0;"£"#,0
 			isHidden
-			displayFolder: Time Intelligence
-			lineageTag: aa55f41d-87eb-4f33-affa-687cc9cb7d74
+			displayFolder: Sales
+			lineageTag: 646ae3e1-7a32-47c7-9f2d-aa5aa4e84ffb
 
 			changedProperty = IsHidden
+
+			annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
 
