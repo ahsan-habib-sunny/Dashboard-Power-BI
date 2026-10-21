@@ -37,7 +37,7 @@ ref table fact_wastage
 ref table _Measures
 ref table 'Time Intelligence'
 
-ref role 'NQ Branch Manager'
+ref role 'Branch Manager'
 ref role 'Head Office'
 
 ref cultureInfo en-US

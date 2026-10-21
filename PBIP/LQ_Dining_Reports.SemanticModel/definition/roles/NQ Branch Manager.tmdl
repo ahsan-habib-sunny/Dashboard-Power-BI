@@ -1,7 +1,0 @@
-role 'NQ Branch Manager'
-	modelPermission: read
-
-	tablePermission dim_branch = [manager_email] = "AHSANTHEANALYST\ahsan"
-
-	annotation PBI_Id = 3e5faf8557a84023861f4aa2c57db53f
-

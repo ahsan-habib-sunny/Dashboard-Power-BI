@@ -92,10 +92,9 @@ table dim_branch
 				let
 				    Source = Csv.Document(File.Contents(DataFolder & "dim_branch.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"branch_id", type text}, {"branch_name", type text}, {"area_type", type text}, {"postcode", type text}, {"seats", Int64.Type}, {"opening_date", type date}, {"manager_email", type text}, {"trading_hours_per_day", Int64.Type}}),
-				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","nq.manager@lqdining.example","AHSANTHEANALYST\ahsan",Replacer.ReplaceText,{"manager_email"})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"branch_id", type text}, {"branch_name", type text}, {"area_type", type text}, {"postcode", type text}, {"seats", Int64.Type}, {"opening_date", type date}, {"manager_email", type text}, {"trading_hours_per_day", Int64.Type}})
 				in
-				    #"Replaced Value"
+				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
 

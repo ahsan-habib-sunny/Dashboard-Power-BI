@@ -673,9 +673,6 @@ table _Measures
 		displayFolder: Branch Group Benchmarks
 		lineageTag: 968c4c6f-1120-4315-b2f2-75ded84667c3
 
-	measure upn = USERPRINCIPALNAME()
-		lineageTag: 8b4a6ba0-af2b-46b3-b751-69f8b09ccf00
-
 	partition _Measures = m
 		mode: import
 		source =
