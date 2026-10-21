@@ -1,16 +1,6 @@
 table fact_sales_lines
 	lineageTag: acbc1c2d-d652-426d-9bc2-c8afae459376
 
-	column sales_line_id
-		dataType: string
-		lineageTag: c4688589-e11b-451f-bed2-59e76bd00f0c
-		summarizeBy: none
-		sourceColumn: sales_line_id
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
 	column order_id
 		dataType: string
 		lineageTag: 1e9b1e2d-3bd3-4cbf-91af-303d7f31001d
@@ -159,9 +149,12 @@ table fact_sales_lines
 				let
 				    Source = Csv.Document(File.Contents(DataFolder & "fact_sales_lines.csv"),[Delimiter=",", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"sales_line_id", type text}, {"order_id", type text}, {"date", type date}, {"hour", Int64.Type}, {"branch_id", type text}, {"channel_id", type text}, {"menu_item_id", type text}, {"customer_id", type text}, {"campaign_id", type text}, {"quantity", Int64.Type}, {"unit_price", type number}, {"gross_amount", type number}, {"discount_amount", Int64.Type}, {"net_amount", type number}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"sales_line_id", type text}, {"order_id", type text}, {"date", type date}, {"hour", Int64.Type}, {"branch_id", type text}, {"channel_id", type text}, {"menu_item_id", type text}, {"customer_id", type text}, {"campaign_id", type text}, {"quantity", Int64.Type}, {"unit_price", type number}, {"gross_amount", type number}, {"discount_amount", Int64.Type}, {"net_amount", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"sales_line_id"})
 				in
-				    #"Changed Type"
+				    #"Removed Columns"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

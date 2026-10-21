@@ -1,16 +1,6 @@
 table fact_labour_shifts
 	lineageTag: 80e8c49b-0498-43c4-8640-2bb755b5da0c
 
-	column shift_id
-		dataType: string
-		lineageTag: 13775746-01d8-4bf9-b37e-7a1ff0716b8f
-		summarizeBy: none
-		sourceColumn: shift_id
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
 	column date
 		dataType: dateTime
 		formatString: Long Date
@@ -98,9 +88,12 @@ table fact_labour_shifts
 				let
 				    Source = Csv.Document(File.Contents(DataFolder & "fact_labour_shifts.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"shift_id", type text}, {"date", type date}, {"branch_id", type text}, {"role_id", type text}, {"scheduled_hours", type number}, {"actual_hours", type number}, {"hourly_rate", type number}, {"labour_cost", type number}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"shift_id", type text}, {"date", type date}, {"branch_id", type text}, {"role_id", type text}, {"scheduled_hours", type number}, {"actual_hours", type number}, {"hourly_rate", type number}, {"labour_cost", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"shift_id"})
 				in
-				    #"Changed Type"
+				    #"Removed Columns"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

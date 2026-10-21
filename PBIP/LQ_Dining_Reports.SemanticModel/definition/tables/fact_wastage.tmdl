@@ -1,16 +1,6 @@
 table fact_wastage
 	lineageTag: 04567dd4-7d48-44e6-8647-b73bee5f59e8
 
-	column waste_id
-		dataType: string
-		lineageTag: a25a3009-b258-495b-a400-eb1fb1cb867f
-		summarizeBy: none
-		sourceColumn: waste_id
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
 	column date
 		dataType: dateTime
 		formatString: Long Date
@@ -96,9 +86,10 @@ table fact_wastage
 				let
 				    Source = Csv.Document(File.Contents(DataFolder & "fact_wastage.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"waste_id", type text}, {"date", type date}, {"branch_id", type text}, {"ingredient_id", type text}, {"waste_reason", type text}, {"quantity", type number}, {"unit_cost", type number}, {"waste_cost", type number}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"waste_id", type text}, {"date", type date}, {"branch_id", type text}, {"ingredient_id", type text}, {"waste_reason", type text}, {"quantity", type number}, {"unit_cost", type number}, {"waste_cost", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"waste_id"})
 				in
-				    #"Changed Type"
+				    #"Removed Columns"
 
 	annotation PBI_ResultType = Table
 

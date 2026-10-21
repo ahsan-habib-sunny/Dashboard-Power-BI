@@ -1,16 +1,6 @@
 table fact_purchases
 	lineageTag: 62699074-507d-4abd-b4ec-64b5af4750f4
 
-	column purchase_line_id
-		dataType: string
-		lineageTag: 3fafba42-a2de-4302-8938-e276b9e2c9e6
-		summarizeBy: none
-		sourceColumn: purchase_line_id
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
 	column delivery_date
 		dataType: dateTime
 		formatString: Long Date
@@ -96,9 +86,12 @@ table fact_purchases
 				let
 				    Source = Csv.Document(File.Contents(DataFolder & "fact_purchases.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"purchase_line_id", type text}, {"delivery_date", type date}, {"branch_id", type text}, {"supplier_id", type text}, {"ingredient_id", type text}, {"quantity", type number}, {"unit_cost", type number}, {"line_cost", type number}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"purchase_line_id", type text}, {"delivery_date", type date}, {"branch_id", type text}, {"supplier_id", type text}, {"ingredient_id", type text}, {"quantity", type number}, {"unit_cost", type number}, {"line_cost", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"purchase_line_id"})
 				in
-				    #"Changed Type"
+				    #"Removed Columns"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

@@ -1,16 +1,6 @@
 table fact_bookings
 	lineageTag: 870e5df5-525a-4595-8b12-b2809bb339f3
 
-	column booking_id
-		dataType: string
-		lineageTag: 28507eb1-91a4-46c3-a623-c7e31947c720
-		summarizeBy: none
-		sourceColumn: booking_id
-
-		changedProperty = IsHidden
-
-		annotation SummarizationSetBy = Automatic
-
 	column booking_created_date
 		dataType: dateTime
 		formatString: Long Date
@@ -105,9 +95,12 @@ table fact_bookings
 				let
 				    Source = Csv.Document(File.Contents(DataFolder & "fact_bookings.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"booking_id", type text}, {"booking_created_date", type date}, {"visit_date", type date}, {"visit_hour", Int64.Type}, {"branch_id", type text}, {"customer_id", type text}, {"booking_source", type text}, {"party_size", Int64.Type}, {"booking_status", type text}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"booking_id", type text}, {"booking_created_date", type date}, {"visit_date", type date}, {"visit_hour", Int64.Type}, {"branch_id", type text}, {"customer_id", type text}, {"booking_source", type text}, {"party_size", Int64.Type}, {"booking_status", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"booking_id"})
 				in
-				    #"Changed Type"
+				    #"Removed Columns"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 
